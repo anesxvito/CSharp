@@ -1,18 +1,17 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     Indicates whether the specified Unicode character is categorized as a punctuation mark.
+    ///     Determines whether the specified Unicode character is categorized as a punctuation mark.
+    ///     This method checks if the character is classified as a punctuation mark according to the Unicode standard.
+    ///     This includes characters like commas, periods, exclamation marks, etc.
     /// </summary>
     /// <param name="c">The Unicode character to evaluate.</param>
-    /// <returns>true if  is a punctuation mark; otherwise, false.</returns>
+    /// <returns>
+    ///     <c>true</c> if the character is a punctuation mark (e.g., ',', '.', '!', '?');
+    ///     otherwise, <c>false</c>.
+    /// </returns>
     public static Boolean IsPunctuation(this Char c)
     {
         return Char.IsPunctuation(c);

@@ -1,62 +1,24 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     Converts an array of 8-bit unsigned integers to its equivalent string representation that is encoded with
-    ///     base-64 digits.
+    /// Converts a byte array to its equivalent base64 string representation.
     /// </summary>
     /// <param name="inArray">An array of 8-bit unsigned integers.</param>
-    /// <returns>The string representation, in base 64, of the contents of .</returns>
-    public static String ToBase64String(this Byte[] inArray)
+    /// <param name="offset">The starting index of the subset to convert.</param>
+    /// <param name="length">The number of elements to convert.</param>
+    /// <param name="options">The formatting options for the base64 string (optional).</param>
+    /// <returns>The base64-encoded string representation of the byte array subset.</returns>
+    public static string ToBase64String(this byte[] inArray, int offset = 0, int length = -1, Base64FormattingOptions options = Base64FormattingOptions.None)
     {
-        return Convert.ToBase64String(inArray);
-    }
+        // Use the full length of the array if the length is not specified.
+        if (length == -1)
+        {
+            length = inArray.Length - offset;
+        }
 
-    /// <summary>
-    ///     Converts an array of 8-bit unsigned integers to its equivalent string representation that is encoded with
-    ///     base-64 digits. A parameter specifies whether to insert line breaks in the return value.
-    /// </summary>
-    /// <param name="inArray">An array of 8-bit unsigned integers.</param>
-    /// <param name="options">to insert a line break every 76 characters, or  to not insert line breaks.</param>
-    /// <returns>The string representation in base 64 of the elements in .</returns>
-    public static String ToBase64String(this Byte[] inArray, Base64FormattingOptions options)
-    {
-        return Convert.ToBase64String(inArray, options);
-    }
-
-    /// <summary>
-    ///     Converts a subset of an array of 8-bit unsigned integers to its equivalent string representation that is
-    ///     encoded with base-64 digits. Parameters specify the subset as an offset in the input array, and the number of
-    ///     elements in the array to convert.
-    /// </summary>
-    /// <param name="inArray">An array of 8-bit unsigned integers.</param>
-    /// <param name="offset">An offset in .</param>
-    /// <param name="length">The number of elements of  to convert.</param>
-    /// <returns>The string representation in base 64 of  elements of , starting at position .</returns>
-    public static String ToBase64String(this Byte[] inArray, Int32 offset, Int32 length)
-    {
-        return Convert.ToBase64String(inArray, offset, length);
-    }
-
-    /// <summary>
-    ///     Converts a subset of an array of 8-bit unsigned integers to its equivalent string representation that is
-    ///     encoded with base-64 digits. Parameters specify the subset as an offset in the input array, the number of
-    ///     elements in the array to convert, and whether to insert line breaks in the return value.
-    /// </summary>
-    /// <param name="inArray">An array of 8-bit unsigned integers.</param>
-    /// <param name="offset">An offset in .</param>
-    /// <param name="length">The number of elements of  to convert.</param>
-    /// <param name="options">to insert a line break every 76 characters, or  to not insert line breaks.</param>
-    /// <returns>The string representation in base 64 of  elements of , starting at position .</returns>
-    public static String ToBase64String(this Byte[] inArray, Int32 offset, Int32 length, Base64FormattingOptions options)
-    {
+        // Return the appropriate base64 string based on the options.
         return Convert.ToBase64String(inArray, offset, length, options);
     }
 }

@@ -1,34 +1,36 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     An Int64 extension method that query if '@this' is prime.
+    ///     A long extension method that checks if the number is prime.
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <returns>true if prime, false if not.</returns>
-    public static bool IsPrime(this Int64 @this)
+    /// <param name="this">The number to check.</param>
+    /// <returns>true if the number is prime, false otherwise.</returns>
+    public static bool IsPrime(this long @this)
     {
-        if (@this == 1 || @this == 2)
-        {
-            return true;
-        }
-
-        if (@this%2 == 0)
+        // Handle special cases
+        if (@this == 1)
         {
             return false;
         }
 
-        var sqrt = (Int64) Math.Sqrt(@this);
-        for (Int64 t = 3; t <= sqrt; t = t + 2)
+        if (@this == 2)
         {
-            if (@this%t == 0)
+            return true; // 2 is the only even prime number
+        }
+
+        // Eliminate even numbers quickly
+        if (@this % 2 == 0)
+        {
+            return false;
+        }
+
+        // Check for factors up to the square root of the number
+        var sqrt = (long)Math.Sqrt(@this);
+        for (long t = 3; t <= sqrt; t += 2)  // Check only odd numbers
+        {
+            if (@this % t == 0)
             {
                 return false;
             }

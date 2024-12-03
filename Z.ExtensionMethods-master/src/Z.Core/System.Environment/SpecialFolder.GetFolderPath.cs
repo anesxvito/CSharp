@@ -1,27 +1,25 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
-    /// <summary>An Environment.SpecialFolder extension method that gets folder path.</summary>
-    /// <param name="this">this.</param>
-    /// <returns>The folder path.</returns>
-    public static string GetFolderPath(this Environment.SpecialFolder @this)
+    /// <summary>
+    ///     An extension method for <see cref="Environment.SpecialFolder"/> that gets the folder path.
+    /// </summary>
+    /// <param name="folder">The special folder to retrieve the path for.</param>
+    /// <returns>The folder path as a string.</returns>
+    public static string GetFolderPath(this Environment.SpecialFolder folder)
     {
-        return Environment.GetFolderPath(@this);
+        return Environment.GetFolderPath(folder);
     }
 
-    /// <summary>An Environment.SpecialFolder extension method that gets folder path.</summary>
-    /// <param name="this">this.</param>
-    /// <param name="option">The option.</param>
-    /// <returns>The folder path.</returns>
-    public static string GetFolderPath(this Environment.SpecialFolder @this, Environment.SpecialFolderOption option)
+    /// <summary>
+    ///     An extension method for <see cref="Environment.SpecialFolder"/> that gets the folder path with an option.
+    /// </summary>
+    /// <param name="folder">The special folder to retrieve the path for.</param>
+    /// <param name="option">The option that controls the folder path retrieval.</param>
+    /// <returns>The folder path as a string.</returns>
+    public static string GetFolderPath(this Environment.SpecialFolder folder, Environment.SpecialFolderOption option)
     {
-        return Environment.GetFolderPath(@this, option);
+        return Environment.GetFolderPath(folder, option);
     }
 }

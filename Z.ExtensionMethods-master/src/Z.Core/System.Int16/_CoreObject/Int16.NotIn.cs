@@ -1,23 +1,15 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     A T extension method to determines whether the object is not equal to any of the provided values.
+    ///     An Int16 extension method that determines whether the value is not equal to any of the provided values.
     /// </summary>
-    /// <param name="this">The object to be compared.</param>
-    /// <param name="values">The value list to compare with the object.</param>
-    /// <returns>true if the values list doesn't contains the object, else false.</returns>
-    /// ###
-    /// <typeparam name="T">Generic type parameter.</typeparam>
-    public static bool NotIn(this Int16 @this, params Int16[] values)
+    /// <param name="value">The value to be compared.</param>
+    /// <param name="values">The values to compare with the given value.</param>
+    /// <returns>true if the value is not in the list of provided values, otherwise false.</returns>
+    public static bool NotIn(this Int16 value, params Int16[] values)
     {
-        return Array.IndexOf(values, @this) == -1;
+        return Array.IndexOf(values, value) == -1;
     }
 }

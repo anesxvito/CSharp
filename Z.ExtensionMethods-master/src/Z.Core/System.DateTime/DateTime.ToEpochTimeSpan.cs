@@ -1,20 +1,18 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
     ///     A DateTime extension method that converts the @this to an epoch time span.
+    ///     The input DateTime is assumed to be in UTC. If not, convert it to UTC first.
     /// </summary>
     /// <param name="this">The @this to act on.</param>
-    /// <returns>@this as a TimeSpan.</returns>
+    /// <returns>@this as a TimeSpan from Unix epoch (1970-01-01T00:00:00Z).</returns>
     public static TimeSpan ToEpochTimeSpan(this DateTime @this)
     {
-        return @this.Subtract(new DateTime(1970, 1, 1));
+        // Ensure the DateTime is in UTC for accurate calculation
+        DateTime utcDateTime = @this.Kind == DateTimeKind.Utc ? @this : @this.ToUniversalTime();
+
+        return utcDateTime.Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc));
     }
 }

@@ -1,26 +1,26 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     A DateTime extension method that ages the given this.
+    ///     A DateTime extension method that calculates the age based on the given date.
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <returns>An int.</returns>
+    /// <param name="this">The date of birth.</param>
+    /// <returns>The age as an integer.</returns>
     public static int Age(this DateTime @this)
     {
-        if (DateTime.Today.Month < @this.Month ||
-            DateTime.Today.Month == @this.Month &&
-            DateTime.Today.Day < @this.Day)
+        // Get today's date
+        var today = DateTime.Today;
+
+        // Calculate the age
+        int age = today.Year - @this.Year;
+
+        // Adjust age if the birthday hasn't occurred yet this year
+        if (today < @this.AddYears(age))
         {
-            return DateTime.Today.Year - @this.Year - 1;
+            age--;
         }
-        return DateTime.Today.Year - @this.Year;
+
+        return age;
     }
 }

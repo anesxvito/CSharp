@@ -1,40 +1,22 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     A System.DateTime extension method that ends of week.
+    ///     A System.DateTime extension method that returns the end of the week for the given DateTime.
     /// </summary>
-    /// <param name="dt">Date/Time of the dt.</param>
-    /// <param name="startDayOfWeek">(Optional) the start day of week.</param>
-    /// <returns>A DateTime.</returns>
+    /// <param name="dt">The DateTime to act on.</param>
+    /// <param name="startDayOfWeek">(Optional) The start day of the week (default is Sunday).</param>
+    /// <returns>A DateTime representing the last moment of the week.</returns>
     public static DateTime EndOfWeek(this DateTime dt, DayOfWeek startDayOfWeek = DayOfWeek.Sunday)
     {
-        DateTime end = dt;
-        DayOfWeek endDayOfWeek = startDayOfWeek - 1;
-        if (endDayOfWeek < 0)
-        {
-            endDayOfWeek = DayOfWeek.Saturday;
-        }
+        // Calculate the difference between the current day and the desired end of week day
+        int daysUntilEndOfWeek = ((int)startDayOfWeek - (int)dt.DayOfWeek + 6) % 7;
 
-        if (end.DayOfWeek != endDayOfWeek)
-        {
-            if (endDayOfWeek < end.DayOfWeek)
-            {
-                end = end.AddDays(7 - (end.DayOfWeek - endDayOfWeek));
-            }
-            else
-            {
-                end = end.AddDays(endDayOfWeek - end.DayOfWeek);
-            }
-        }
+        // Add the days difference to reach the end of the week
+        DateTime endOfWeek = dt.AddDays(daysUntilEndOfWeek);
 
-        return new DateTime(end.Year, end.Month, end.Day, 23, 59, 59, 999);
+        // Return the DateTime for the end of the week with the time set to 23:59:59.999
+        return new DateTime(endOfWeek.Year, endOfWeek.Month, endOfWeek.Day, 23, 59, 59, 999);
     }
 }

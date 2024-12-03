@@ -1,19 +1,13 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     An Int64 extension method that milliseconds the given this.
+    ///     A long extension method that converts the given value to a TimeSpan representing the specified number of milliseconds.
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <returns>A TimeSpan.</returns>
-    public static TimeSpan Milliseconds(this Int64 @this)
+    /// <param name="this">The value to act on, representing milliseconds.</param>
+    /// <returns>A TimeSpan representing the specified number of milliseconds.</returns>
+    public static TimeSpan Milliseconds(this long @this)
     {
         return TimeSpan.FromMilliseconds(@this);
     }

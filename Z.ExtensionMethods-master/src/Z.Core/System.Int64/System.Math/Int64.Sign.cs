@@ -1,9 +1,3 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
@@ -11,12 +5,25 @@ public static partial class Extensions
     /// <summary>
     ///     Returns a value indicating the sign of a 64-bit signed integer.
     /// </summary>
-    /// <param name="value">A signed number.</param>
+    /// <param name="value">A signed 64-bit integer.</param>
     /// <returns>
-    ///     A number that indicates the sign of , as shown in the following table.Return value Meaning -1  is less than
-    ///     zero. 0  is equal to zero. 1  is greater than zero.
+    ///     A number that indicates the sign of <paramref name="value"/>, as shown in the following table:
+    ///     <list type="table">
+    ///         <item>
+    ///             <term>-1</term>
+    ///             <description>If the value is less than zero.</description>
+    ///         </item>
+    ///         <item>
+    ///             <term>0</term>
+    ///             <description>If the value is equal to zero.</description>
+    ///         </item>
+    ///         <item>
+    ///             <term>1</term>
+    ///             <description>If the value is greater than zero.</description>
+    ///         </item>
+    ///     </list>
     /// </returns>
-    public static Int32 Sign(this Int64 value)
+    public static int Sign(this long value)
     {
         return Math.Sign(value);
     }

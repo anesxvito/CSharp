@@ -1,34 +1,36 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     An Int16 extension method that query if '@this' is prime.
+    ///     An Int16 extension method that checks if the value is a prime number.
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <returns>true if prime, false if not.</returns>
-    public static bool IsPrime(this Int16 @this)
+    /// <param name="value">The value to act on.</param>
+    /// <returns>true if the value is prime, false otherwise.</returns>
+    public static bool IsPrime(this Int16 value)
     {
-        if (@this == 1 || @this == 2)
-        {
-            return true;
-        }
-
-        if (@this%2 == 0)
+        // Handle edge cases
+        if (value < 2)
         {
             return false;
         }
 
-        var sqrt = (Int16) Math.Sqrt(@this);
-        for (Int64 t = 3; t <= sqrt; t = t + 2)
+        if (value == 2)
         {
-            if (@this%t == 0)
+            return true;
+        }
+
+        // Eliminate even numbers greater than 2
+        if (value % 2 == 0)
+        {
+            return false;
+        }
+
+        // Check for factors from 3 to sqrt(value)
+        var li = (int) Math.Sqrt(value);
+        for (int i = 3; i <= li; i += 2)
+        {
+            if (value % i == 0)
             {
                 return false;
             }

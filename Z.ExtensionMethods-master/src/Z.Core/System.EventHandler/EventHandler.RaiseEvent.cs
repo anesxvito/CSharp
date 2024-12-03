@@ -1,64 +1,48 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     An EventHandler extension method that raises the event event.
+    ///     An EventHandler extension method that raises the event.
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
+    /// <param name="handler">The EventHandler to raise.</param>
     /// <param name="sender">Source of the event.</param>
-    public static void RaiseEvent(this EventHandler @this, object sender)
+    public static void RaiseEvent(this EventHandler handler, object sender)
     {
-        if (@this != null)
-        {
-            @this(sender, null);
-        }
+        handler?.Invoke(sender, EventArgs.Empty);
     }
 
     /// <summary>
-    ///     An EventHandler extension method that raises.
+    ///     An EventHandler extension method that raises the event with custom EventArgs.
     /// </summary>
-    /// <param name="handler">The handler to act on.</param>
+    /// <param name="handler">The EventHandler to raise.</param>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">Event information.</param>
     public static void Raise(this EventHandler handler, object sender, EventArgs e)
     {
-        if (handler != null)
-            handler(sender, e);
+        handler?.Invoke(sender, e);
     }
 
     /// <summary>
-    ///     An EventHandler&lt;TEventArgs&gt; extension method that raises the event event.
+    ///     An EventHandler&lt;TEventArgs&gt; extension method that raises the event with default event arguments.
     /// </summary>
     /// <typeparam name="TEventArgs">Type of the event arguments.</typeparam>
-    /// <param name="this">The @this to act on.</param>
+    /// <param name="handler">The EventHandler&lt;TEventArgs&gt; to raise.</param>
     /// <param name="sender">Source of the event.</param>
-    public static void RaiseEvent<TEventArgs>(this EventHandler<TEventArgs> @this, object sender) where TEventArgs : EventArgs
+    public static void RaiseEvent<TEventArgs>(this EventHandler<TEventArgs> handler, object sender) where TEventArgs : EventArgs
     {
-        if (@this != null)
-        {
-            @this(sender, Activator.CreateInstance<TEventArgs>());
-        }
+        handler?.Invoke(sender, Activator.CreateInstance<TEventArgs>());
     }
 
     /// <summary>
-    ///     An EventHandler&lt;TEventArgs&gt; extension method that raises the event event.
+    ///     An EventHandler&lt;TEventArgs&gt; extension method that raises the event with provided event arguments.
     /// </summary>
     /// <typeparam name="TEventArgs">Type of the event arguments.</typeparam>
-    /// <param name="this">The @this to act on.</param>
+    /// <param name="handler">The EventHandler&lt;TEventArgs&gt; to raise.</param>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">Event information to send to registered event handlers.</param>
-    public static void RaiseEvent<TEventArgs>(this EventHandler<TEventArgs> @this, object sender, TEventArgs e) where TEventArgs : EventArgs
+    public static void RaiseEvent<TEventArgs>(this EventHandler<TEventArgs> handler, object sender, TEventArgs e) where TEventArgs : EventArgs
     {
-        if (@this != null)
-        {
-            @this(sender, e);
-        }
+        handler?.Invoke(sender, e);
     }
 }

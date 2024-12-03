@@ -1,21 +1,15 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
-public static partial class Extensions
+public static class Extensions
 {
     /// <summary>
-    ///     An Int32 extension method that factor of.
+    ///     An Int32 extension method that checks if the value is a factor of the given factor number.
     /// </summary>
     /// <param name="this">The @this to act on.</param>
-    /// <param name="factorNumer">The factor numer.</param>
+    /// <param name="factorNumer">The factor number.</param>
     /// <returns>true if it succeeds, false if it fails.</returns>
-    public static bool FactorOf(this Int32 @this, Int32 factorNumer)
+    public static bool FactorOf(this int @this, int factorNumer)
     {
-        return factorNumer%@this == 0;
+        return factorNumer % @this == 0;
     }
 }

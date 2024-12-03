@@ -1,24 +1,16 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
-using System;
-
-public static partial class Extensions
+public class Example
 {
-    /// <summary>
-    ///     A T extension method that chains actions.
-    /// </summary>
-    /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="action">The action.</param>
-    /// <returns>The @this acted on.</returns>
-    public static T Chain<T>(this T @this, Action<T> action)
-    {
-        action(@this);
+    public int Value { get; set; }
 
-        return @this;
+    public static void Main()
+    {
+        var example = new Example { Value = 10 };
+
+        example.Chain(e => e.Value += 5)   // Increment Value by 5
+               .Chain(e => Console.WriteLine(e.Value))  // Print Value
+               .Chain(e => e.Value *= 2);  // Double Value
+
+        // Output:
+        // 15
     }
 }

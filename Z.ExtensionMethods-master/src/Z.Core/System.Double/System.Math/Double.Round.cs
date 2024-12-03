@@ -1,9 +1,3 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
@@ -13,11 +7,10 @@ public static partial class Extensions
     /// </summary>
     /// <param name="a">A double-precision floating-point number to be rounded.</param>
     /// <returns>
-    ///     The integer nearest . If the fractional component of  is halfway between two integers, one of which is even
-    ///     and the other odd, then the even number is returned. Note that this method returns a  instead of an integral
-    ///     type.
+    ///     The integer nearest to the input value. If the fractional component is halfway between two integers,
+    ///     the even number is returned.
     /// </returns>
-    public static Double Round(this Double a)
+    public static double Round(this double a)
     {
         return Math.Round(a);
     }
@@ -27,45 +20,38 @@ public static partial class Extensions
     /// </summary>
     /// <param name="a">A double-precision floating-point number to be rounded.</param>
     /// <param name="digits">The number of fractional digits in the return value.</param>
-    /// <returns>The number nearest to  that contains a number of fractional digits equal to .</returns>
-    /// ###
-    /// <param name="value">A double-precision floating-point number to be rounded.</param>
-    public static Double Round(this Double a, Int32 digits)
+    /// <returns>The number nearest to the input value that contains the specified number of fractional digits.</returns>
+    public static double Round(this double a, int digits)
     {
         return Math.Round(a, digits);
     }
 
     /// <summary>
-    ///     Rounds a double-precision floating-point value to the nearest integer. A parameter specifies how to round the
-    ///     value if it is midway between two numbers.
+    ///     Rounds a double-precision floating-point value to the nearest integer. Specifies how to round the value
+    ///     if it is midway between two numbers.
     /// </summary>
     /// <param name="a">A double-precision floating-point number to be rounded.</param>
-    /// <param name="mode">Specification for how to round  if it is midway between two other numbers.</param>
+    /// <param name="mode">Specifies how to round if the value is midway between two other numbers.</param>
     /// <returns>
-    ///     The integer nearest . If  is halfway between two integers, one of which is even and the other odd, then
-    ///     determines which of the two is returned.
+    ///     The integer nearest to the input value, with rounding behavior determined by the specified mode.
     /// </returns>
-    /// ###
-    /// <param name="value">A double-precision floating-point number to be rounded.</param>
-    public static Double Round(this Double a, MidpointRounding mode)
+    public static double Round(this double a, MidpointRounding mode)
     {
         return Math.Round(a, mode);
     }
 
     /// <summary>
-    ///     Rounds a double-precision floating-point value to a specified number of fractional digits. A parameter
+    ///     Rounds a double-precision floating-point value to a specified number of fractional digits. A parameter 
     ///     specifies how to round the value if it is midway between two numbers.
     /// </summary>
     /// <param name="a">A double-precision floating-point number to be rounded.</param>
     /// <param name="digits">The number of fractional digits in the return value.</param>
-    /// <param name="mode">Specification for how to round  if it is midway between two other numbers.</param>
+    /// <param name="mode">Specifies how to round if the value is midway between two other numbers.</param>
     /// <returns>
-    ///     The number nearest to  that has a number of fractional digits equal to . If  has fewer fractional digits than
-    ///     ,  is returned unchanged.
+    ///     The number nearest to the input value, with the specified number of fractional digits and rounding behavior
+    ///     determined by the specified mode.
     /// </returns>
-    /// ###
-    /// <param name="value">A double-precision floating-point number to be rounded.</param>
-    public static Double Round(this Double a, Int32 digits, MidpointRounding mode)
+    public static double Round(this double a, int digits, MidpointRounding mode)
     {
         return Math.Round(a, digits, mode);
     }

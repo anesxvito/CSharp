@@ -1,20 +1,14 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     An Int16 extension method that query if '@this' is even.
+    ///     Determines whether the specified Int16 value is even.
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <returns>true if even, false if not.</returns>
-    public static bool IsEven(this Int16 @this)
+    /// <param name="value">The Int16 value to check.</param>
+    /// <returns>true if the value is even; otherwise, false.</returns>
+    public static bool IsEven(this Int16 value)
     {
-        return @this%2 == 0;
+        return value % 2 == 0;
     }
 }

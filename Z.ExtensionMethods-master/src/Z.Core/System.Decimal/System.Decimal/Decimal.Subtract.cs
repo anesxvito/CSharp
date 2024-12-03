@@ -1,19 +1,13 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     Subtracts one specified  value from another.
+    ///     Subtracts one specified <see cref="Decimal"/> value from another.
     /// </summary>
-    /// <param name="d1">The minuend.</param>
-    /// <param name="d2">The subtrahend.</param>
-    /// <returns>The result of subtracting  from .</returns>
+    /// <param name="d1">The minuend, or the value from which another value is subtracted.</param>
+    /// <param name="d2">The subtrahend, or the value to subtract from <paramref name="d1"/>.</param>
+    /// <returns>The result of subtracting <paramref name="d2"/> from <paramref name="d1"/>.</returns>
     public static Decimal Subtract(this Decimal d1, Decimal d2)
     {
         return Decimal.Subtract(d1, d2);

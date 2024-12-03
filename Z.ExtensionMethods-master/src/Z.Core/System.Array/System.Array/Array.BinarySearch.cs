@@ -1,88 +1,78 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 using System.Collections;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     Searches an entire one-dimensional sorted  for a specific element, using the  interface implemented by each
-    ///     element of the  and by the specified object.
+    /// Searches an entire one-dimensional sorted array for a specific element using the default comparer.
     /// </summary>
-    /// <param name="array">The sorted one-dimensional  to search.</param>
+    /// <param name="array">The sorted one-dimensional array to search.</param>
     /// <param name="value">The object to search for.</param>
     /// <returns>
-    ///     The index of the specified  in the specified , if  is found. If  is not found and  is less than one or more
-    ///     elements in , a negative number which is the bitwise complement of the index of the first element that is
-    ///     larger than . If  is not found and  is greater than any of the elements in , a negative number which is the
-    ///     bitwise complement of (the index of the last element plus 1).
+    /// The index of the specified value if found. 
+    /// If not found, a negative number that is the bitwise complement of the index of the next element
+    /// that is larger than the value or, if no such element exists, the bitwise complement of the index 
+    /// past the last element in the array.
     /// </returns>
-    public static Int32 BinarySearch(this Array array, Object value)
+    public static int BinarySearch(this Array array, object value)
     {
         return Array.BinarySearch(array, value);
     }
 
     /// <summary>
-    ///     Searches a range of elements in a one-dimensional sorted  for a value, using the  interface implemented by
-    ///     each element of the  and by the specified value.
+    /// Searches a range of elements in a one-dimensional sorted array for a specific element using the default comparer.
     /// </summary>
-    /// <param name="array">The sorted one-dimensional  to search.</param>
+    /// <param name="array">The sorted one-dimensional array to search.</param>
     /// <param name="index">The starting index of the range to search.</param>
     /// <param name="length">The length of the range to search.</param>
     /// <param name="value">The object to search for.</param>
     /// <returns>
-    ///     The index of the specified  in the specified , if  is found. If  is not found and  is less than one or more
-    ///     elements in , a negative number which is the bitwise complement of the index of the first element that is
-    ///     larger than . If  is not found and  is greater than any of the elements in , a negative number which is the
-    ///     bitwise complement of (the index of the last element plus 1).
+    /// The index of the specified value if found. 
+    /// If not found, a negative number that is the bitwise complement of the index of the next element
+    /// that is larger than the value or, if no such element exists, the bitwise complement of the index 
+    /// past the last element in the range.
     /// </returns>
-    public static Int32 BinarySearch(this Array array, Int32 index, Int32 length, Object value)
+    public static int BinarySearch(this Array array, int index, int length, object value)
     {
         return Array.BinarySearch(array, index, length, value);
     }
 
     /// <summary>
-    ///     Searches an entire one-dimensional sorted  for a value using the specified  interface.
+    /// Searches an entire one-dimensional sorted array for a specific element using the specified comparer.
     /// </summary>
-    /// <param name="array">The sorted one-dimensional  to search.</param>
+    /// <param name="array">The sorted one-dimensional array to search.</param>
     /// <param name="value">The object to search for.</param>
     /// <param name="comparer">
-    ///     The  implementation to use when comparing elements.-or- null to use the  implementation
-    ///     of each element.
+    /// The comparer to use when comparing elements or null to use the default comparer for each element type.
     /// </param>
     /// <returns>
-    ///     The index of the specified  in the specified , if  is found. If  is not found and  is less than one or more
-    ///     elements in , a negative number which is the bitwise complement of the index of the first element that is
-    ///     larger than . If  is not found and  is greater than any of the elements in , a negative number which is the
-    ///     bitwise complement of (the index of the last element plus 1).
+    /// The index of the specified value if found. 
+    /// If not found, a negative number that is the bitwise complement of the index of the next element
+    /// that is larger than the value or, if no such element exists, the bitwise complement of the index 
+    /// past the last element in the array.
     /// </returns>
-    public static Int32 BinarySearch(this Array array, Object value, IComparer comparer)
+    public static int BinarySearch(this Array array, object value, IComparer comparer)
     {
         return Array.BinarySearch(array, value, comparer);
     }
 
     /// <summary>
-    ///     Searches a range of elements in a one-dimensional sorted  for a value, using the specified  interface.
+    /// Searches a range of elements in a one-dimensional sorted array for a specific element using the specified comparer.
     /// </summary>
-    /// <param name="array">The sorted one-dimensional  to search.</param>
+    /// <param name="array">The sorted one-dimensional array to search.</param>
     /// <param name="index">The starting index of the range to search.</param>
     /// <param name="length">The length of the range to search.</param>
     /// <param name="value">The object to search for.</param>
     /// <param name="comparer">
-    ///     The  implementation to use when comparing elements.-or- null to use the  implementation
-    ///     of each element.
+    /// The comparer to use when comparing elements or null to use the default comparer for each element type.
     /// </param>
     /// <returns>
-    ///     The index of the specified  in the specified , if  is found. If  is not found and  is less than one or more
-    ///     elements in , a negative number which is the bitwise complement of the index of the first element that is
-    ///     larger than . If  is not found and  is greater than any of the elements in , a negative number which is the
-    ///     bitwise complement of (the index of the last element plus 1).
+    /// The index of the specified value if found. 
+    /// If not found, a negative number that is the bitwise complement of the index of the next element
+    /// that is larger than the value or, if no such element exists, the bitwise complement of the index 
+    /// past the last element in the range.
     /// </returns>
-    public static Int32 BinarySearch(this Array array, Int32 index, Int32 length, Object value, IComparer comparer)
+    public static int BinarySearch(this Array array, int index, int length, object value, IComparer comparer)
     {
         return Array.BinarySearch(array, index, length, value, comparer);
     }

@@ -1,20 +1,20 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     A DateTime extension method that query if '@this' is now.
+    ///     A DateTime extension method that checks if the current DateTime is the same as now (ignoring milliseconds).
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <returns>true if now, false if not.</returns>
+    /// <param name="this">The DateTime to act on.</param>
+    /// <returns>true if the DateTime is now (ignoring milliseconds), false if not.</returns>
     public static bool IsNow(this DateTime @this)
     {
-        return @this == DateTime.Now;
+        // Compare year, month, day, hour, minute, and second (ignore milliseconds)
+        return @this.Year == DateTime.Now.Year &&
+               @this.Month == DateTime.Now.Month &&
+               @this.Day == DateTime.Now.Day &&
+               @this.Hour == DateTime.Now.Hour &&
+               @this.Minute == DateTime.Now.Minute &&
+               @this.Second == DateTime.Now.Second;
     }
 }

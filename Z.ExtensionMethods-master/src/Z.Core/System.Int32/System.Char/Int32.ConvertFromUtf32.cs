@@ -1,9 +1,3 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
@@ -13,11 +7,11 @@ public static partial class Extensions
     /// </summary>
     /// <param name="utf32">A 21-bit Unicode code point.</param>
     /// <returns>
-    ///     A string consisting of one  object or a surrogate pair of  objects equivalent to the code point specified by
-    ///     the  parameter.
+    ///     A string consisting of one character or a surrogate pair of characters equivalent to the code point specified by
+    ///     the utf32 parameter.
     /// </returns>
-    public static String ConvertFromUtf32(this Int32 utf32)
+    public static string ConvertFromUtf32(this int utf32)
     {
-        return Char.ConvertFromUtf32(utf32);
+        return char.ConvertFromUtf32(utf32);
     }
 }

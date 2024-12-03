@@ -1,21 +1,28 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 using System.Net;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     Converts a long value from network byte order to host byte order.
+    ///     Converts a 64-bit signed integer from network byte order to host byte order.
     /// </summary>
-    /// <param name="network">The number to convert, expressed in network byte order.</param>
-    /// <returns>A long value, expressed in host byte order.</returns>
+    /// <param name="network">The 64-bit signed integer to convert, expressed in network byte order.</param>
+    /// <returns>A 64-bit signed integer, expressed in host byte order.</returns>
+    /// <remarks>
+    ///     This method assumes the system is using little-endian architecture. If the system
+    ///     uses a big-endian architecture, no conversion is necessary.
+    /// </remarks>
     public static Int64 NetworkToHostOrder(this Int64 network)
     {
-        return IPAddress.NetworkToHostOrder(network);
+        // If the system's architecture is little-endian, we need to perform the conversion.
+        if (BitConverter.IsLittleEndian)
+        {
+            byte[] bytes = BitConverter.GetBytes(network);
+            Array.Reverse(bytes); // Reverse the byte array to convert from network order (big-endian) to host order (little-endian).
+            return BitConverter.ToInt64(bytes, 0);
+        }
+
+        // If the system is already big-endian, return the number as-is.
+        return network;
     }
 }

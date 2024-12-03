@@ -1,21 +1,15 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     An Int16 extension method that query if '@this' is multiple of.
+    ///     Determines whether the specified Int16 value is a multiple of the provided factor.
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="factor">The factor.</param>
-    /// <returns>true if multiple of, false if not.</returns>
-    public static bool IsMultipleOf(this Int16 @this, Int16 factor)
+    /// <param name="value">The Int16 value to check.</param>
+    /// <param name="factor">The factor to check against.</param>
+    /// <returns>true if the value is a multiple of the factor; otherwise, false.</returns>
+    public static bool IsMultipleOf(this Int16 value, Int16 factor)
     {
-        return @this%factor == 0;
+        return value % factor == 0;
     }
 }

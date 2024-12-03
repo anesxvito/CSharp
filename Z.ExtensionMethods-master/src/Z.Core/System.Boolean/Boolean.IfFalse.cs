@@ -1,20 +1,20 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     A bool extension method that execute an Action if the value is false.
+    ///     Executes the specified <see cref="Action"/> if the boolean value is <c>false</c>.
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="action">The action to execute.</param>
+    /// <param name="this">The boolean value to evaluate.</param>
+    /// <param name="action">The <see cref="Action"/> to execute if the value is <c>false</c>.</param>
+    /// <exception cref="ArgumentNullException">Thrown if <paramref name="action"/> is <c>null</c>.</exception>
     public static void IfFalse(this bool @this, Action action)
     {
+        if (action == null)
+        {
+            throw new ArgumentNullException(nameof(action), "Action cannot be null.");
+        }
+
         if (!@this)
         {
             action();

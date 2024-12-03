@@ -1,9 +1,3 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
@@ -11,11 +5,25 @@ public static partial class Extensions
     /// <summary>
     ///     Retrieves the byte at a specified location in a specified array.
     /// </summary>
-    /// <param name="array">An array.</param>
-    /// <param name="index">A location in the array.</param>
-    /// <returns>Returns the  byte in the array.</returns>
-    public static Byte GetByte(this Array array, Int32 index)
+    /// <param name="array">The array from which the byte will be retrieved.</param>
+    /// <param name="index">The zero-based index of the byte to retrieve.</param>
+    /// <returns>The byte at the specified location in the array.</returns>
+    /// <exception cref="ArgumentNullException">Thrown if the <paramref name="array"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">
+    ///     Thrown if <paramref name="index"/> is less than 0 or greater than or equal to the byte length of the array.
+    /// </exception>
+    public static byte GetByte(this Array array, int index)
     {
+        if (array == null)
+        {
+            throw new ArgumentNullException(nameof(array), "Array cannot be null.");
+        }
+
+        if (index < 0 || index >= Buffer.ByteLength(array))
+        {
+            throw new ArgumentOutOfRangeException(nameof(index), "Index must be within the bounds of the array.");
+        }
+
         return Buffer.GetByte(array, index);
     }
 }

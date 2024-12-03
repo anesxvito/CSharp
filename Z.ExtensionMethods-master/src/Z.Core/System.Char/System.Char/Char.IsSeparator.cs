@@ -1,18 +1,17 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     Indicates whether the specified Unicode character is categorized as a separator character.
+    ///     Determines whether the specified Unicode character is categorized as a separator.
+    ///     A separator character is one that separates words or phrases in a text. 
+    ///     This includes spaces, tab characters, line breaks, and other whitespace characters.
     /// </summary>
     /// <param name="c">The Unicode character to evaluate.</param>
-    /// <returns>true if  is a separator character; otherwise, false.</returns>
+    /// <returns>
+    ///     <c>true</c> if the character is a separator, such as spaces, tabs, or newlines;
+    ///     otherwise, <c>false</c>.
+    /// </returns>
     public static Boolean IsSeparator(this Char c)
     {
         return Char.IsSeparator(c);

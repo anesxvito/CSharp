@@ -1,33 +1,24 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     A DateTime extension method that starts of week.
+    ///     A DateTime extension method that returns the start of the week, given a specified start day.
     /// </summary>
-    /// <param name="dt">The dt to act on.</param>
-    /// <param name="startDayOfWeek">(Optional) the start day of week.</param>
-    /// <returns>A DateTime.</returns>
+    /// <param name="dt">The DateTime to act on.</param>
+    /// <param name="startDayOfWeek">The day of the week that defines the start of the week. Default is Sunday.</param>
+    /// <returns>A DateTime representing the start of the week.</returns>
     public static DateTime StartOfWeek(this DateTime dt, DayOfWeek startDayOfWeek = DayOfWeek.Sunday)
     {
         var start = new DateTime(dt.Year, dt.Month, dt.Day);
+        int difference = start.DayOfWeek - startDayOfWeek;
 
-        if (start.DayOfWeek != startDayOfWeek)
+        // If the startDayOfWeek is earlier in the week than the current day, adjust by subtracting the difference
+        if (difference < 0)
         {
-            int d = startDayOfWeek - start.DayOfWeek;
-            if (startDayOfWeek <= start.DayOfWeek)
-            {
-                return start.AddDays(d);
-            }
-            return start.AddDays(-7 + d);
+            difference += 7;
         }
 
-        return start;
+        return start.AddDays(-difference).Date;
     }
 }

@@ -1,21 +1,17 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     Indicates whether the two specified  objects form a surrogate pair.
+    ///     Determines whether the two specified Unicode characters form a valid surrogate pair.
+    ///     A surrogate pair is a combination of a high surrogate and a low surrogate, used to represent
+    ///     characters outside the Basic Multilingual Plane (BMP) in UTF-16 encoding.
+    ///     The high surrogate must be in the range U+D800 to U+DBFF, and the low surrogate must be in the range U+DC00 to U+DFFF.
     /// </summary>
     /// <param name="highSurrogate">The character to evaluate as the high surrogate of a surrogate pair.</param>
     /// <param name="lowSurrogate">The character to evaluate as the low surrogate of a surrogate pair.</param>
     /// <returns>
-    ///     true if the numeric value of the  parameter ranges from U+D800 through U+DBFF, and the numeric value of the
-    ///     parameter ranges from U+DC00 through U+DFFF; otherwise, false.
+    ///     true if the characters form a valid surrogate pair; otherwise, false.
     /// </returns>
     public static Boolean IsSurrogatePair(this Char highSurrogate, Char lowSurrogate)
     {

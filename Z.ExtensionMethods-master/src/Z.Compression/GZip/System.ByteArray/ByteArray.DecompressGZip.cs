@@ -1,9 +1,3 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System.IO;
 using System.IO.Compression;
 using System.Text;
@@ -11,61 +5,28 @@ using System.Text;
 public static partial class Extensions
 {
     /// <summary>
-    ///     A byte[] extension method that decompress the byte array gzip to string.
+    /// Decompresses a GZip-compressed byte array into a string using the default encoding.
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <returns>The byte array gzip to string.</returns>
-    public static string DecompressGZip(this byte[] @this)
+    /// <param name="compressedData">The GZip-compressed byte array.</param>
+    /// <returns>The decompressed string.</returns>
+    public static string DecompressGZip(this byte[] compressedData)
     {
-        const int bufferSize = 1024;
-        using (var memoryStream = new MemoryStream(@this))
-        {
-            using (var zipStream = new GZipStream(memoryStream, CompressionMode.Decompress))
-            {
-                // Memory stream for storing the decompressed bytes
-                using (var outStream = new MemoryStream())
-                {
-                    var buffer = new byte[bufferSize];
-                    int totalBytes = 0;
-                    int readBytes;
-                    while ((readBytes = zipStream.Read(buffer, 0, bufferSize)) > 0)
-                    {
-                        outStream.Write(buffer, 0, readBytes);
-                        totalBytes += readBytes;
-                    }
-                    return Encoding.Default.GetString(outStream.GetBuffer(), 0, totalBytes);
-                }
-            }
-        }
+        return compressedData.DecompressGZip(Encoding.Default);
     }
 
     /// <summary>
-    ///     A byte[] extension method that decompress the byte array gzip to string.
+    /// Decompresses a GZip-compressed byte array into a string using the specified encoding.
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="encoding">The encoding.</param>
-    /// <returns>The byte array gzip to string.</returns>
-    public static string DecompressGZip(this byte[] @this, Encoding encoding)
+    /// <param name="compressedData">The GZip-compressed byte array.</param>
+    /// <param name="encoding">The encoding to use for the resulting string.</param>
+    /// <returns>The decompressed string.</returns>
+    public static string DecompressGZip(this byte[] compressedData, Encoding encoding)
     {
-        const int bufferSize = 1024;
-        using (var memoryStream = new MemoryStream(@this))
-        {
-            using (var zipStream = new GZipStream(memoryStream, CompressionMode.Decompress))
-            {
-                // Memory stream for storing the decompressed bytes
-                using (var outStream = new MemoryStream())
-                {
-                    var buffer = new byte[bufferSize];
-                    int totalBytes = 0;
-                    int readBytes;
-                    while ((readBytes = zipStream.Read(buffer, 0, bufferSize)) > 0)
-                    {
-                        outStream.Write(buffer, 0, readBytes);
-                        totalBytes += readBytes;
-                    }
-                    return encoding.GetString(outStream.GetBuffer(), 0, totalBytes);
-                }
-            }
-        }
+        using var memoryStream = new MemoryStream(compressedData);
+        using var zipStream = new GZipStream(memoryStream, CompressionMode.Decompress);
+        using var outStream = new MemoryStream();
+
+        zipStream.CopyTo(outStream);
+        return encoding.GetString(outStream.ToArray());
     }
 }

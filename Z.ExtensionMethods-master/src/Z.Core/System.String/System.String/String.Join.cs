@@ -1,9 +1,9 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
+| Enhance the .NET Framework and .NET Core with over 1000 extension methods.
+
+
+():
+
+
 using System;
 using System.Collections.Generic;
 
@@ -18,7 +18,7 @@ public static partial class Extensions
     /// </param>
     /// <param name="value">An array that contains the elements to concatenate.</param>
     /// <returns>
-    ///     A string that consists of the elements in  delimited by the  string. If  is an empty array, the method
+    ///     A string that consists of the elements in  delied by the  string. If  is an empty array, the method
     ///     returns .
     /// </returns>
     public static String Join(this String separator, String[] value)
@@ -35,7 +35,7 @@ public static partial class Extensions
     /// </param>
     /// <param name="values">An array that contains the elements to concatenate.</param>
     /// <returns>
-    ///     A string that consists of the elements of  delimited by the  string. If  is an empty array, the method
+    ///     A string that consists of the elements of  delied by the  string. If  is an empty array, the method
     ///     returns .
     /// </returns>
     public static String Join(this String separator, Object[] values)
@@ -67,7 +67,7 @@ public static partial class Extensions
     /// </param>
     /// <param name="values">An array that contains the elements to concatenate.</param>
     /// <returns>
-    ///     A string that consists of the elements in  delimited by the  string. If  is an empty array, the method
+    ///     A string that consists of the elements in  delied by the  string. If  is an empty array, the method
     ///     returns .
     /// </returns>
     public static String Join(this String separator, IEnumerable<String> values)
@@ -86,7 +86,7 @@ public static partial class Extensions
     /// <param name="startIndex">The first element in  to use.</param>
     /// <param name="count">The number of elements of  to use.</param>
     /// <returns>
-    ///     A string that consists of the strings in  delimited by the  string. -or- if  is zero,  has no elements, or
+    ///     A string that consists of the strings in  delied by the  string. -or- if  is zero,  has no elements, or
     ///     and all the elements of  are .
     /// </returns>
     public static String Join(this String separator, String[] value, Int32 startIndex, Int32 count)

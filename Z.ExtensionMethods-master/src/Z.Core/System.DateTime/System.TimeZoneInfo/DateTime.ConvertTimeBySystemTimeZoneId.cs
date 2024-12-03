@@ -1,9 +1,3 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
@@ -14,7 +8,10 @@ public static partial class Extensions
     /// <param name="dateTime">The date and time to convert.</param>
     /// <param name="destinationTimeZoneId">The identifier of the destination time zone.</param>
     /// <returns>The date and time in the destination time zone.</returns>
-    public static DateTime ConvertTimeBySystemTimeZoneId(this DateTime dateTime, String destinationTimeZoneId)
+    public static DateTime ConvertTimeBySystemTimeZoneId(
+        this DateTime dateTime,
+        String destinationTimeZoneId
+    )
     {
         return TimeZoneInfo.ConvertTimeBySystemTimeZoneId(dateTime, destinationTimeZoneId);
     }
@@ -28,8 +25,16 @@ public static partial class Extensions
     /// <returns>
     ///     The date and time in the destination time zone that corresponds to the  parameter in the source time zone.
     /// </returns>
-    public static DateTime ConvertTimeBySystemTimeZoneId(this DateTime dateTime, String sourceTimeZoneId, String destinationTimeZoneId)
+    public static DateTime ConvertTimeBySystemTimeZoneId(
+        this DateTime dateTime,
+        String sourceTimeZoneId,
+        String destinationTimeZoneId
+    )
     {
-        return TimeZoneInfo.ConvertTimeBySystemTimeZoneId(dateTime, sourceTimeZoneId, destinationTimeZoneId);
+        return TimeZoneInfo.ConvertTimeBySystemTimeZoneId(
+            dateTime,
+            sourceTimeZoneId,
+            destinationTimeZoneId
+        );
     }
 }

@@ -1,100 +1,80 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 using System.Collections.Generic;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     Uses the specified functions to add a key/value pair to the IDictionary&lt;TKey, TValue&gt; if the key does
-    ///     not already exist, or to update a key/value pair in the IDictionary&lt;TKey, TValue&gt;> if the key already
-    ///     exists.
+    /// Adds or updates a key-value pair in the dictionary. If the key does not exist, adds the value; otherwise, updates the value.
     /// </summary>
-    /// <typeparam name="TKey">Type of the key.</typeparam>
-    /// <typeparam name="TValue">Type of the value.</typeparam>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="key">The key to be added or whose value should be updated.</param>
-    /// <param name="value">The value to be added or updated.</param>
+    /// <typeparam name="TKey">The type of the dictionary keys.</typeparam>
+    /// <typeparam name="TValue">The type of the dictionary values.</typeparam>
+    /// <param name="dictionary">The dictionary to act on.</param>
+    /// <param name="key">The key to add or update.</param>
+    /// <param name="value">The value to add or update.</param>
     /// <returns>The new value for the key.</returns>
-    public static TValue AddOrUpdate<TKey, TValue>(this IDictionary<TKey, TValue> @this, TKey key, TValue value)
+    public static TValue AddOrUpdate<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, TValue value)
     {
-        if (!@this.ContainsKey(key))
+        if (!dictionary.ContainsKey(key))
         {
-            @this.Add(new KeyValuePair<TKey, TValue>(key, value));
+            dictionary.Add(key, value);
         }
         else
         {
-            @this[key] = value;
+            dictionary[key] = value;
         }
 
-        return @this[key];
+        return dictionary[key];
     }
 
     /// <summary>
-    ///     Uses the specified functions to add a key/value pair to the IDictionary&lt;TKey, TValue&gt; if the key does
-    ///     not already exist, or to update a key/value pair in the IDictionary&lt;TKey, TValue&gt;> if the key already
-    ///     exists.
+    /// Adds or updates a key-value pair in the dictionary. If the key does not exist, adds the specified value; otherwise, updates the value using a factory function.
     /// </summary>
-    /// <typeparam name="TKey">Type of the key.</typeparam>
-    /// <typeparam name="TValue">Type of the value.</typeparam>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="key">The key to be added or whose value should be updated.</param>
-    /// <param name="addValue">The value to be added for an absent key.</param>
+    /// <typeparam name="TKey">The type of the dictionary keys.</typeparam>
+    /// <typeparam name="TValue">The type of the dictionary values.</typeparam>
+    /// <param name="dictionary">The dictionary to act on.</param>
+    /// <param name="key">The key to add or update.</param>
+    /// <param name="addValue">The value to add if the key does not exist.</param>
     /// <param name="updateValueFactory">
-    ///     The function used to generate a new value for an existing key based on the key's
-    ///     existing value.
+    /// A factory function to generate the updated value for an existing key, based on its current value.
     /// </param>
-    /// <returns>
-    ///     The new value for the key. This will be either be addValue (if the key was absent) or the result of
-    ///     updateValueFactory (if the key was present).
-    /// </returns>
-    public static TValue AddOrUpdate<TKey, TValue>(this IDictionary<TKey, TValue> @this, TKey key, TValue addValue, Func<TKey, TValue, TValue> updateValueFactory)
+    /// <returns>The new value for the key.</returns>
+    public static TValue AddOrUpdate<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, TValue addValue, Func<TKey, TValue, TValue> updateValueFactory)
     {
-        if (!@this.ContainsKey(key))
+        if (!dictionary.ContainsKey(key))
         {
-            @this.Add(new KeyValuePair<TKey, TValue>(key, addValue));
+            dictionary.Add(key, addValue);
         }
         else
         {
-            @this[key] = updateValueFactory(key, @this[key]);
+            dictionary[key] = updateValueFactory(key, dictionary[key]);
         }
 
-        return @this[key];
+        return dictionary[key];
     }
 
     /// <summary>
-    ///     Uses the specified functions to add a key/value pair to the IDictionary&lt;TKey, TValue&gt; if the key does
-    ///     not already exist, or to update a key/value pair in the IDictionary&lt;TKey, TValue&gt;> if the key already
-    ///     exists.
+    /// Adds or updates a key-value pair in the dictionary. If the key does not exist, adds a value generated by a factory function; otherwise, updates the value using a factory function.
     /// </summary>
-    /// <typeparam name="TKey">Type of the key.</typeparam>
-    /// <typeparam name="TValue">Type of the value.</typeparam>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="key">The key to be added or whose value should be updated.</param>
-    /// <param name="addValueFactory">The function used to generate a value for an absent key.</param>
+    /// <typeparam name="TKey">The type of the dictionary keys.</typeparam>
+    /// <typeparam name="TValue">The type of the dictionary values.</typeparam>
+    /// <param name="dictionary">The dictionary to act on.</param>
+    /// <param name="key">The key to add or update.</param>
+    /// <param name="addValueFactory">A factory function to generate the value for an absent key.</param>
     /// <param name="updateValueFactory">
-    ///     The function used to generate a new value for an existing key based on the key's
-    ///     existing value.
+    /// A factory function to generate the updated value for an existing key, based on its current value.
     /// </param>
-    /// <returns>
-    ///     The new value for the key. This will be either be the result of addValueFactory (if the key was absent) or
-    ///     the result of updateValueFactory (if the key was present).
-    /// </returns>
-    public static TValue AddOrUpdate<TKey, TValue>(this IDictionary<TKey, TValue> @this, TKey key, Func<TKey, TValue> addValueFactory, Func<TKey, TValue, TValue> updateValueFactory)
+    /// <returns>The new value for the key.</returns>
+    public static TValue AddOrUpdate<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, Func<TKey, TValue> addValueFactory, Func<TKey, TValue, TValue> updateValueFactory)
     {
-        if (!@this.ContainsKey(key))
+        if (!dictionary.ContainsKey(key))
         {
-            @this.Add(new KeyValuePair<TKey, TValue>(key, addValueFactory(key)));
+            dictionary.Add(key, addValueFactory(key));
         }
         else
         {
-            @this[key] = updateValueFactory(key, @this[key]);
+            dictionary[key] = updateValueFactory(key, dictionary[key]);
         }
 
-        return @this[key];
+        return dictionary[key];
     }
 }

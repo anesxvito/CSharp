@@ -1,9 +1,3 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
@@ -13,11 +7,16 @@ public static partial class Extensions
     /// </summary>
     /// <param name="d">The number whose logarithm is to be found.</param>
     /// <returns>
-    ///     One of the values in the following table.  parameterReturn value Positive The natural logarithm of ; that is,
-    ///     ln , or log eZero Negative Equal to Equal to.
+    ///     The natural logarithm of <paramref name="d"/>. 
+    ///     - If <paramref name="d"/> is positive, the result is the natural log (ln) of <paramref name="d"/>.
+    ///     - If <paramref name="d"/> is zero or negative, the method returns NaN.
     /// </returns>
-    public static Double Log(this Double d)
+    public static double Log(this double d)
     {
+        if (d <= 0)
+        {
+            return double.NaN; // Logarithm undefined for zero or negative numbers
+        }
         return Math.Log(d);
     }
 
@@ -27,15 +26,17 @@ public static partial class Extensions
     /// <param name="d">The number whose logarithm is to be found.</param>
     /// <param name="newBase">The base of the logarithm.</param>
     /// <returns>
-    ///     One of the values in the following table. (+Infinity denotes , -Infinity denotes , and NaN denotes .)Return
-    ///     value&gt; 0(0 &lt;&lt; 1) -or-(&gt; 1)lognewBase(a)&lt; 0(any value)NaN(any value)&lt; 0NaN != 1 = 0NaN != 1
-    ///     = +InfinityNaN = NaN(any value)NaN(any value) = NaNNaN(any value) = 1NaN = 00 &lt;&lt; 1 +Infinity = 0&gt; 1-
-    ///     Infinity =  +Infinity0 &lt;&lt; 1-Infinity =  +Infinity&gt; 1+Infinity = 1 = 00 = 1 = +Infinity0.
+    ///     The logarithm of <paramref name="d"/> to the base <paramref name="newBase"/>.
+    ///     - If <paramref name="d"/> is greater than zero, the method returns the log of <paramref name="d"/> to the base <paramref name="newBase"/>.
+    ///     - If <paramref name="d"/> is zero or negative, the method returns NaN.
+    ///     - If <paramref name="newBase"/> is 1 or less, the method returns NaN, as logarithms with base â‰¤ 1 are undefined.
     /// </returns>
-    /// ###
-    /// <param name="a">The number whose logarithm is to be found.</param>
-    public static Double Log(this Double d, Double newBase)
+    public static double Log(this double d, double newBase)
     {
+        if (d <= 0 || newBase <= 1)
+        {
+            return double.NaN; // Logarithm undefined for zero, negative numbers, or base <= 1
+        }
         return Math.Log(d, newBase);
     }
 }

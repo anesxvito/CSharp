@@ -1,9 +1,3 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 #if NET45_OR_GREATER
 using System.IO;
 using System.IO.Compression;
@@ -12,61 +6,53 @@ using System.Text;
 public static partial class Extensions
 {
     /// <summary>
-    ///     Extracts all the files in the specified zip archive to a directory on the file system
+    /// Extracts all the files in the specified zip archive to a directory on the file system.
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="destinationDirectoryName">
-    ///     The path to the directory in which to place the
-    ///     extracted files, specified as a relative or absolute path. A relative path is interpreted as
-    ///     relative to the current working directory.
-    /// </param>
-    public static void ExtractZipFileToDirectory(this FileInfo @this, string destinationDirectoryName)
+    /// <param name="zipFile">The zip archive to extract.</param>
+    /// <param name="destinationDirectoryName">The path to the directory where files will be extracted.</param>
+    public static void ExtractZipFileToDirectory(this FileInfo zipFile, string destinationDirectoryName)
     {
-        ZipFile.ExtractToDirectory(@this.FullName, destinationDirectoryName);
+        ZipFile.ExtractToDirectory(zipFile.FullName, destinationDirectoryName);
     }
 
     /// <summary>
-    ///     Extracts all the files in the specified zip archive to a directory on the file system and uses the specified
-    ///     character encoding for entry names.
+    /// Extracts all the files in the specified zip archive to a directory on the file system,
+    /// using the specified character encoding for entry names.
     /// </summary>
-    /// <param name="this">The path to the archive that is to be extracted.</param>
-    /// <param name="destinationDirectoryName">
-    ///     The path to the directory in which to place the extracted files, specified as a
-    ///     relative or absolute path. A relative path is interpreted as relative to the current working directory.
-    /// </param>
+    /// <param name="zipFile">The zip archive to extract.</param>
+    /// <param name="destinationDirectoryName">The path to the directory where files will be extracted.</param>
     /// <param name="entryNameEncoding">
-    ///     The encoding to use when reading or writing entry names in this archive. Specify a
-    ///     value for this parameter only when an encoding is required for interoperability with zip archive tools and
-    ///     libraries that do not support UTF-8 encoding for entry names.
+    /// The encoding to use for entry names. Use this when interoperability with tools
+    /// that do not support UTF-8 is required.
     /// </param>
-    public static void ExtractZipFileToDirectory(this FileInfo @this, string destinationDirectoryName, Encoding entryNameEncoding)
+    public static void ExtractZipFileToDirectory(this FileInfo zipFile, string destinationDirectoryName, Encoding entryNameEncoding)
     {
-        ZipFile.ExtractToDirectory(@this.FullName, destinationDirectoryName, entryNameEncoding);
-    }
-
-    /// <summary>Extracts all the files in the specified zip archive to a directory on the file system.</summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="destinationDirectory">Pathname of the destination directory.</param>
-    public static void ExtractZipFileToDirectory(this FileInfo @this, DirectoryInfo destinationDirectory)
-    {
-        ZipFile.ExtractToDirectory(@this.FullName, destinationDirectory.FullName);
+        ZipFile.ExtractToDirectory(zipFile.FullName, destinationDirectoryName, entryNameEncoding);
     }
 
     /// <summary>
-    ///     Extracts all the files in the specified zip archive to a directory on the file system
-    ///     and uses the specified character encoding for entry names.
+    /// Extracts all the files in the specified zip archive to a directory on the file system.
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="destinationDirectory">Pathname of the destination directory.</param>
-    /// <param name="entryNameEncoding">
-    ///     The encoding to use when reading or writing entry names in
-    ///     this archive. Specify a value for this parameter only when an encoding is required for
-    ///     interoperability with zip archive tools and libraries that do not support UTF-8 encoding for
-    ///     entry names.
-    /// </param>
-    public static void ExtractZipFileToDirectory(this FileInfo @this, DirectoryInfo destinationDirectory, Encoding entryNameEncoding)
+    /// <param name="zipFile">The zip archive to extract.</param>
+    /// <param name="destinationDirectory">The destination directory where files will be extracted.</param>
+    public static void ExtractZipFileToDirectory(this FileInfo zipFile, DirectoryInfo destinationDirectory)
     {
-        ZipFile.ExtractToDirectory(@this.FullName, destinationDirectory.FullName, entryNameEncoding);
+        ZipFile.ExtractToDirectory(zipFile.FullName, destinationDirectory.FullName);
+    }
+
+    /// <summary>
+    /// Extracts all the files in the specified zip archive to a directory on the file system,
+    /// using the specified character encoding for entry names.
+    /// </summary>
+    /// <param name="zipFile">The zip archive to extract.</param>
+    /// <param name="destinationDirectory">The destination directory where files will be extracted.</param>
+    /// <param name="entryNameEncoding">
+    /// The encoding to use for entry names. Use this when interoperability with tools
+    /// that do not support UTF-8 is required.
+    /// </param>
+    public static void ExtractZipFileToDirectory(this FileInfo zipFile, DirectoryInfo destinationDirectory, Encoding entryNameEncoding)
+    {
+        ZipFile.ExtractToDirectory(zipFile.FullName, destinationDirectory.FullName, entryNameEncoding);
     }
 }
 #endif

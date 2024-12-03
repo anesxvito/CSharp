@@ -1,35 +1,46 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     Enumerates from @this to toCharacter.
+    /// Enumerates from @this to toCharacter.
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="toCharacter">to character.</param>
-    /// <returns>An enumerator that allows foreach to be used to process @this to toCharacter.</returns>
+    /// <param name="this">The starting character.</param>
+    /// <param name="toCharacter">The target character.</param>
+    /// <returns>An enumerator that allows foreach to be used to process characters from @this to toCharacter.</returns>
+    /// <exception cref="ArgumentException">Thrown when the characters are not in a valid range.</exception>
     public static IEnumerable<char> To(this char @this, char toCharacter)
     {
-        bool reverseRequired = (@this > toCharacter);
+        if (@this == toCharacter)
+            yield return @this; // If both characters are the same, return the single character.
+
+        bool reverseRequired = @this > toCharacter;
 
         char first = reverseRequired ? toCharacter : @this;
         char last = reverseRequired ? @this : toCharacter;
 
-        IEnumerable<char> result = Enumerable.Range(first, last - first + 1).Select(charCode => (char) charCode);
+        // Check if the characters are within a valid range
+        if (first > last)
+            throw new ArgumentException("The starting character must be less than or equal to the ending character for ascending ranges.");
 
-        if (reverseRequired)
+        // Iterate over the range, reversing if needed.
+        foreach (var ch in Enumerable.Range(first, last - first + 1).Select(charCode => (char)charCode))
         {
-            result = result.Reverse();
+            yield return ch;
         }
 
-
-        return result;
+        // If the range is reversed, we reverse the iteration.
+        if (reverseRequired)
+        {
+            var reversedResult = Enumerable.Range(first, last - first + 1)
+                                           .Select(charCode => (char)charCode)
+                                           .Reverse();
+            foreach (var ch in reversedResult)
+            {
+                yield return ch;
+            }
+        }
     }
 }

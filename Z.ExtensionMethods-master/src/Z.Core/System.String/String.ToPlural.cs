@@ -1,17 +1,17 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
-#if !NETSTANDARD
+| Enhance the .NET Framework and .NET Core with over 1000 extension methods.
+
+
+():
+
+
+
 using System.Data.Entity.Design.PluralizationServices;
 using System.Globalization;
 #endif
 
 public static partial class Extensions
 {
-#if !NETSTANDARD
+
     /// <summary>
     ///     A string extension method that converts the @this to a plural.
     /// </summary>

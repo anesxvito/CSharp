@@ -1,32 +1,16 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System.Collections.Generic;
 using System.Linq;
 
 public static partial class Extensions
 {
-    /// <summary>Enumerates merge inner enumerable in this collection.</summary>
-    /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <param name="this">The @this to act on.</param>
-    /// <returns>
-    ///     An enumerator that allows foreach to be used to process merge inner enumerable in
-    ///     this collection.
-    /// </returns>
-    public static IEnumerable<T> MergeInnerEnumerable<T>(this IEnumerable<IEnumerable<T>> @this)
+    /// <summary>
+    /// Merges all inner enumerables into a single enumerable.
+    /// </summary>
+    /// <typeparam name="T">The type of elements in the enumerables.</typeparam>
+    /// <param name="enumerables">The collection of inner enumerables to merge.</param>
+    /// <returns>A single enumerable containing all elements from the inner enumerables.</returns>
+    public static IEnumerable<T> MergeInnerEnumerable<T>(this IEnumerable<IEnumerable<T>> enumerables)
     {
-        List<IEnumerable<T>> listItem = @this.ToList();
-
-        var list = new List<T>();
-
-        foreach (var item in listItem)
-        {
-            list.AddRange(item);
-        }
-
-        return list;
+        return enumerables.SelectMany(inner => inner);
     }
 }

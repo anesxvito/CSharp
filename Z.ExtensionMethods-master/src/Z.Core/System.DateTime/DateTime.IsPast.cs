@@ -1,20 +1,20 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     A DateTime extension method that query if '@this' is in the past.
+    ///     A DateTime extension method that queries if '@this' is in the past (ignoring milliseconds).
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <returns>true if the value is in the past, false if not.</returns>
+    /// <param name="this">The DateTime to act on.</param>
+    /// <returns>true if the value is in the past (ignoring milliseconds), false if not.</returns>
     public static bool IsPast(this DateTime @this)
     {
-        return @this < DateTime.Now;
+        // Compare the date and time up to seconds (ignoring milliseconds)
+        return @this.Year < DateTime.Now.Year ||
+               (@this.Year == DateTime.Now.Year && @this.Month < DateTime.Now.Month) ||
+               (@this.Year == DateTime.Now.Year && @this.Month == DateTime.Now.Month && @this.Day < DateTime.Now.Day) ||
+               (@this.Year == DateTime.Now.Year && @this.Month == DateTime.Now.Month && @this.Day == DateTime.Now.Day && @this.Hour < DateTime.Now.Hour) ||
+               (@this.Year == DateTime.Now.Year && @this.Month == DateTime.Now.Month && @this.Day == DateTime.Now.Day && @this.Hour == DateTime.Now.Hour && @this.Minute < DateTime.Now.Minute) ||
+               (@this.Year == DateTime.Now.Year && @this.Month == DateTime.Now.Month && @this.Day == DateTime.Now.Day && @this.Hour == DateTime.Now.Hour && @this.Minute == DateTime.Now.Minute && @this.Second < DateTime.Now.Second);
     }
 }

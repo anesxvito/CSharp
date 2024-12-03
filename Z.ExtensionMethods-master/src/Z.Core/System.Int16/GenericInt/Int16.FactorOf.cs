@@ -1,21 +1,15 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     An Int16 extension method that factor of.
+    ///     Determines whether the current value is a factor of the specified factor.
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="factorNumer">The factor numer.</param>
-    /// <returns>true if it succeeds, false if it fails.</returns>
-    public static bool FactorOf(this Int16 @this, Int16 factorNumer)
+    /// <param name="value">The current value to check.</param>
+    /// <param name="factor">The factor to check against.</param>
+    /// <returns>true if the current value is a factor of the specified factor, otherwise false.</returns>
+    public static bool IsFactorOf(this Int16 value, Int16 factor)
     {
-        return factorNumer%@this == 0;
+        return factor % value == 0;
     }
 }

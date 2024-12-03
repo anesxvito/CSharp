@@ -1,34 +1,26 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     An object extension method that query if '@this' is assignable from.
+    ///     Determines whether the type of the current object can be assigned from the specified type.
     /// </summary>
-    /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <param name="this">The @this to act on.</param>
-    /// <returns>true if assignable from, false if not.</returns>
-    public static bool IsAssignableFrom<T>(this object @this)
+    /// <typeparam name="T">The target type to check against.</typeparam>
+    /// <param name="this">The object to check.</param>
+    /// <returns>true if the object's type is assignable from the specified type; otherwise, false.</returns>
+    public static bool CanAssignTo<T>(this object @this)
     {
-        Type type = @this.GetType();
-        return type.IsAssignableFrom(typeof (T));
+        return @this.GetType().IsAssignableFrom(typeof(T));
     }
 
     /// <summary>
-    ///     An object extension method that query if '@this' is assignable from.
+    ///     Determines whether the type of the current object can be assigned from the specified target type.
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="targetType">Type of the target.</param>
-    /// <returns>true if assignable from, false if not.</returns>
-    public static bool IsAssignableFrom(this object @this, Type targetType)
+    /// <param name="this">The object to check.</param>
+    /// <param name="targetType">The target type to check against.</param>
+    /// <returns>true if the object's type is assignable from the target type; otherwise, false.</returns>
+    public static bool CanAssignTo(this object @this, Type targetType)
     {
-        Type type = @this.GetType();
-        return type.IsAssignableFrom(targetType);
+        return @this.GetType().IsAssignableFrom(targetType);
     }
 }

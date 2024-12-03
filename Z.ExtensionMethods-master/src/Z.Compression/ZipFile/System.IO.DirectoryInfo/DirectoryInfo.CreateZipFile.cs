@@ -1,9 +1,3 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 #if NET45_OR_GREATER
 using System.IO;
 using System.IO.Compression;
@@ -12,145 +6,77 @@ using System.Text;
 public static partial class Extensions
 {
     /// <summary>
-    ///     Creates a zip archive that contains the files and directories from the specified
-    ///     directory.
+    /// Creates a zip archive containing the files and directories from the specified directory.
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="destinationArchiveFileName">
-    ///     The path of the archive to be created, specified as a
-    ///     relative or absolute path. A relative path is interpreted as relative to the current working
-    ///     directory.
-    /// </param>
-    public static void CreateZipFile(this DirectoryInfo @this, string destinationArchiveFileName)
+    /// <param name="directory">The directory to zip.</param>
+    /// <param name="destinationArchiveFileName">The path of the archive to be created.</param>
+    public static void CreateZipFile(this DirectoryInfo directory, string destinationArchiveFileName)
     {
-        ZipFile.CreateFromDirectory(@this.FullName, destinationArchiveFileName);
+        ZipFile.CreateFromDirectory(directory.FullName, destinationArchiveFileName);
     }
 
     /// <summary>
-    ///     Creates a zip archive that contains the files and directories from the specified
-    ///     directory, uses the specified compression level, and optionally includes the base directory.
+    /// Creates a zip archive containing the files and directories from the specified directory.
+    /// Allows specifying compression level and inclusion of the base directory.
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="destinationArchiveFileName">
-    ///     The path of the archive to be created, specified as a
-    ///     relative or absolute path. A relative path is interpreted as relative to the current working
-    ///     directory.
-    /// </param>
-    /// <param name="compressionLevel">
-    ///     One of the enumeration values that indicates whether to
-    ///     emphasize speed or compression effectiveness when creating the entry.
-    /// </param>
-    /// <param name="includeBaseDirectory">
-    ///     true to include the directory name from
-    ///     sourceDirectoryName at the root of the archive; false to include only the contents of the
-    ///     directory.
-    /// </param>
-    public static void CreateZipFile(this DirectoryInfo @this, string destinationArchiveFileName, CompressionLevel compressionLevel, bool includeBaseDirectory)
+    /// <param name="directory">The directory to zip.</param>
+    /// <param name="destinationArchiveFileName">The path of the archive to be created.</param>
+    /// <param name="compressionLevel">Compression level (speed vs effectiveness).</param>
+    /// <param name="includeBaseDirectory">Whether to include the base directory in the archive.</param>
+    public static void CreateZipFile(this DirectoryInfo directory, string destinationArchiveFileName, CompressionLevel compressionLevel, bool includeBaseDirectory)
     {
-        ZipFile.CreateFromDirectory(@this.FullName, destinationArchiveFileName, compressionLevel, includeBaseDirectory);
+        ZipFile.CreateFromDirectory(directory.FullName, destinationArchiveFileName, compressionLevel, includeBaseDirectory);
     }
 
     /// <summary>
-    ///     Creates a zip archive that contains the files and directories from the specified directory, uses the specified
-    ///     compression level and character encoding for entry names, and optionally includes the base directory.
+    /// Creates a zip archive containing the files and directories from the specified directory.
+    /// Allows specifying compression level, character encoding for entry names, and inclusion of the base directory.
     /// </summary>
-    /// <param name="this">
-    ///     The path to the directory to be archived, specified as a relative or absolute path. A relative path
-    ///     is interpreted as relative to the current working directory.
-    /// </param>
-    /// <param name="destinationArchiveFileName">
-    ///     The path of the archive to be created, specified as a relative or absolute
-    ///     path. A relative path is interpreted as relative to the current working directory.
-    /// </param>
-    /// <param name="compressionLevel">
-    ///     One of the enumeration values that indicates whether to emphasize speed or compression
-    ///     effectiveness when creating the entry.
-    /// </param>
-    /// <param name="includeBaseDirectory">
-    ///     true to include the directory name from sourceDirectoryName at the root of the
-    ///     archive; false to include only the contents of the directory.
-    /// </param>
-    /// <param name="entryNameEncoding">
-    ///     The encoding to use when reading or writing entry names in this archive. Specify a
-    ///     value for this parameter only when an encoding is required for interoperability with zip archive tools and
-    ///     libraries that do not support UTF-8 encoding for entry names.
-    /// </param>
-    public static void CreateZipFile(this DirectoryInfo @this, string destinationArchiveFileName, CompressionLevel compressionLevel, bool includeBaseDirectory, Encoding entryNameEncoding)
+    /// <param name="directory">The directory to zip.</param>
+    /// <param name="destinationArchiveFileName">The path of the archive to be created.</param>
+    /// <param name="compressionLevel">Compression level (speed vs effectiveness).</param>
+    /// <param name="includeBaseDirectory">Whether to include the base directory in the archive.</param>
+    /// <param name="entryNameEncoding">The encoding for entry names in the archive.</param>
+    public static void CreateZipFile(this DirectoryInfo directory, string destinationArchiveFileName, CompressionLevel compressionLevel, bool includeBaseDirectory, Encoding entryNameEncoding)
     {
-        ZipFile.CreateFromDirectory(@this.FullName, destinationArchiveFileName, compressionLevel, includeBaseDirectory, entryNameEncoding);
+        ZipFile.CreateFromDirectory(directory.FullName, destinationArchiveFileName, compressionLevel, includeBaseDirectory, entryNameEncoding);
     }
 
     /// <summary>
-    ///     Creates a zip archive that contains the files and directories from the specified
-    ///     directory.
+    /// Creates a zip archive containing the files and directories from the specified directory.
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="destinationArchiveFile">
-    ///     The path of the archive to be created, specified as a
-    ///     relative or absolute path. A relative path is interpreted as relative to the current working
-    ///     directory.
-    /// </param>
-    public static void CreateZipFile(this DirectoryInfo @this, FileInfo destinationArchiveFile)
+    /// <param name="directory">The directory to zip.</param>
+    /// <param name="destinationFile">The file info of the archive to be created.</param>
+    public static void CreateZipFile(this DirectoryInfo directory, FileInfo destinationFile)
     {
-        ZipFile.CreateFromDirectory(@this.FullName, destinationArchiveFile.FullName);
+        directory.CreateZipFile(destinationFile.FullName);
     }
 
     /// <summary>
-    ///     Creates a zip archive that contains the files and directories from the specified
-    ///     directory, uses the specified compression level, and optionally includes the base directory.
+    /// Creates a zip archive containing the files and directories from the specified directory.
+    /// Allows specifying compression level and inclusion of the base directory.
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="destinationArchiveFile">
-    ///     The path of the archive to be created, specified as a
-    ///     relative or absolute path. A relative path is interpreted as relative to the current working
-    ///     directory.
-    /// </param>
-    /// <param name="compressionLevel">
-    ///     One of the enumeration values that indicates whether to
-    ///     emphasize speed or compression effectiveness when creating the entry.
-    /// </param>
-    /// <param name="includeBaseDirectory">
-    ///     true to include the directory name from
-    ///     sourceDirectoryName at the root of the archive; false to include only the contents of the
-    ///     directory.
-    /// </param>
-    public static void CreateZipFile(this DirectoryInfo @this, FileInfo destinationArchiveFile, CompressionLevel compressionLevel, bool includeBaseDirectory)
+    /// <param name="directory">The directory to zip.</param>
+    /// <param name="destinationFile">The file info of the archive to be created.</param>
+    /// <param name="compressionLevel">Compression level (speed vs effectiveness).</param>
+    /// <param name="includeBaseDirectory">Whether to include the base directory in the archive.</param>
+    public static void CreateZipFile(this DirectoryInfo directory, FileInfo destinationFile, CompressionLevel compressionLevel, bool includeBaseDirectory)
     {
-        ZipFile.CreateFromDirectory(@this.FullName, destinationArchiveFile.FullName, compressionLevel, includeBaseDirectory);
+        directory.CreateZipFile(destinationFile.FullName, compressionLevel, includeBaseDirectory);
     }
 
     /// <summary>
-    ///     Creates a zip archive that contains the files and directories from the specified
-    ///     directory, uses the specified compression level and character encoding for entry names, and
-    ///     optionally includes the base directory.
+    /// Creates a zip archive containing the files and directories from the specified directory.
+    /// Allows specifying compression level, character encoding for entry names, and inclusion of the base directory.
     /// </summary>
-    /// <param name="this">
-    ///     The path to the directory to be archived, specified as a relative or
-    ///     absolute path. A relative path is interpreted as relative to the current working directory.
-    /// </param>
-    /// <param name="destinationArchiveFile">
-    ///     The path of the archive to be created, specified as a
-    ///     relative or absolute path. A relative path is interpreted as relative to the current working
-    ///     directory.
-    /// </param>
-    /// <param name="compressionLevel">
-    ///     One of the enumeration values that indicates whether to
-    ///     emphasize speed or compression effectiveness when creating the entry.
-    /// </param>
-    /// <param name="includeBaseDirectory">
-    ///     true to include the directory name from
-    ///     sourceDirectoryName at the root of the archive; false to include only the contents of the
-    ///     directory.
-    /// </param>
-    /// <param name="entryNameEncoding">
-    ///     The encoding to use when reading or writing entry names in
-    ///     this archive. Specify a value for this parameter only when an encoding is required for
-    ///     interoperability with zip archive tools and libraries that do not support UTF-8 encoding for
-    ///     entry names.
-    /// </param>
-    public static void CreateZipFile(this DirectoryInfo @this, FileInfo destinationArchiveFile, CompressionLevel compressionLevel, bool includeBaseDirectory, Encoding entryNameEncoding)
+    /// <param name="directory">The directory to zip.</param>
+    /// <param name="destinationFile">The file info of the archive to be created.</param>
+    /// <param name="compressionLevel">Compression level (speed vs effectiveness).</param>
+    /// <param name="includeBaseDirectory">Whether to include the base directory in the archive.</param>
+    /// <param name="entryNameEncoding">The encoding for entry names in the archive.</param>
+    public static void CreateZipFile(this DirectoryInfo directory, FileInfo destinationFile, CompressionLevel compressionLevel, bool includeBaseDirectory, Encoding entryNameEncoding)
     {
-        ZipFile.CreateFromDirectory(@this.FullName, destinationArchiveFile.FullName, compressionLevel, includeBaseDirectory, entryNameEncoding);
+        directory.CreateZipFile(destinationFile.FullName, compressionLevel, includeBaseDirectory, entryNameEncoding);
     }
 }
 #endif

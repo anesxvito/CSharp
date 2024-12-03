@@ -1,26 +1,20 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 using System.Collections.Generic;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     An ICollection&lt;T&gt; extension method that removes if.
+    /// Removes the specified value from the collection if it satisfies the given predicate.
     /// </summary>
-    /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="value">The value.</param>
-    /// <param name="predicate">The predicate.</param>
-    public static void RemoveIf<T>(this ICollection<T> @this, T value, Func<T, bool> predicate)
+    /// <typeparam name="T">The type of elements in the collection.</typeparam>
+    /// <param name="collection">The collection to act on.</param>
+    /// <param name="value">The value to potentially remove.</param>
+    /// <param name="predicate">A function to test the value before removal.</param>
+    public static void RemoveIf<T>(this ICollection<T> collection, T value, Func<T, bool> predicate)
     {
         if (predicate(value))
         {
-            @this.Remove(value);
+            collection.Remove(value);
         }
     }
 }

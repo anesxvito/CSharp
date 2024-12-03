@@ -1,24 +1,18 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System.Collections.Generic;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     An ICollection&lt;T&gt; extension method that removes if contains.
+    /// Removes the specified value from the collection if it exists.
     /// </summary>
-    /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="value">The value.</param>
-    public static void RemoveIfContains<T>(this ICollection<T> @this, T value)
+    /// <typeparam name="T">The type of elements in the collection.</typeparam>
+    /// <param name="collection">The collection to act on.</param>
+    /// <param name="value">The value to remove if it exists in the collection.</param>
+    public static void RemoveIfContains<T>(this ICollection<T> collection, T value)
     {
-        if (@this.Contains(value))
+        if (collection.Contains(value))
         {
-            @this.Remove(value);
+            collection.Remove(value);
         }
     }
 }

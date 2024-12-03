@@ -1,45 +1,22 @@
-﻿// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
+// General Assembly Information
+[assembly: AssemblyTitle("Z.Data.Test")]  // The title of the assembly; often seen in application properties.
+[assembly: AssemblyDescription("Test suite for Z.Data library")]  // A short description for the assembly.
+[assembly: AssemblyConfiguration("Release")]  // Configuration used when building the assembly (e.g., Debug or Release).
+[assembly: AssemblyCompany("ZZZ Projects Inc.")]  // Company that owns the assembly.
+[assembly: AssemblyProduct("Z.Data.Test")]  // Product to which this assembly belongs.
+[assembly: AssemblyCopyright("Copyright © ZZZ Projects Inc. 2015")]  // Copyright information.
+[assembly: AssemblyTrademark("ZZZ Projects Trademark")]  // Optional: Trademark details.
+[assembly: AssemblyCulture("")]  // Typically empty unless there’s a specific culture (e.g., "en-US" for English).
 
-[assembly: AssemblyTitle("Z.Data.Test")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Z.Data.Test")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+// COM Visibility
+[assembly: ComVisible(false)]  // Setting to false means this assembly's types are not visible to COM components.
 
-// Setting ComVisible to false makes the types in this assembly not visible 
-// to COM components.  If you need to access a type in this assembly from 
-// COM, set the ComVisible attribute to true on that type.
+[assembly: Guid("a386ffe0-9f60-492d-a32d-227cb3650067")]  // Unique GUID for COM interop (if the assembly is exposed to COM).
 
-[assembly: ComVisible(false)]
-
-// The following GUID is for the ID of the typelib if this project is exposed to COM
-
-[assembly: Guid("a386ffe0-9f60-492d-a32d-227cb3650067")]
-
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Build and Revision Numbers 
-// by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
-
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+// Assembly Versioning Information
+// Version format: [Major Version].[Minor Version].[Build Number].[Revision]
+[assembly: AssemblyVersion("1.0.0.0")]  // The assembly version used by the runtime to determine compatibility between versions.
+[assembly: AssemblyFileVersion("1.0.0.0")]  // File version, which is shown in the file properties (can be different from the assembly version).

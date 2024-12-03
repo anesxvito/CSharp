@@ -1,9 +1,3 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,17 +5,17 @@ using System.Linq;
 public static partial class Extensions
 {
     /// <summary>
-    ///     An ICollection&lt;T&gt; extension method that removes value that satisfy the predicate.
+    /// Removes all items from the collection that satisfy the specified predicate.
     /// </summary>
-    /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="predicate">The predicate.</param>
-    public static void RemoveWhere<T>(this ICollection<T> @this, Func<T, bool> predicate)
+    /// <typeparam name="T">The type of elements in the collection.</typeparam>
+    /// <param name="collection">The collection to remove items from.</param>
+    /// <param name="predicate">A function to test each item for a condition.</param>
+    public static void RemoveWhere<T>(this ICollection<T> collection, Func<T, bool> predicate)
     {
-        List<T> list = @this.Where(predicate).ToList();
-        foreach (T item in list)
+        var itemsToRemove = collection.Where(predicate).ToList();
+        foreach (var item in itemsToRemove)
         {
-            @this.Remove(item);
+            collection.Remove(item);
         }
     }
 }

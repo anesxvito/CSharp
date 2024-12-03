@@ -1,77 +1,32 @@
-﻿// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
-using System;
-#if !NETSTANDARD
+﻿using System;
 using System.Runtime.Caching;
-#endif
 
 public static partial class Extensions
 {
-#if !NETSTANDARD
-    /// <summary>A MemoryCache extension method that adds an or get existing.</summary>
-    /// <typeparam name="TValue">Type of the value.</typeparam>
-    /// <param name="cache">The cache to act on.</param>
-    /// <param name="key">The key.</param>
-    /// <param name="value">The value.</param>
-    /// <returns>A TValue.</returns>
     public static TValue AddOrGetExisting<TValue>(this MemoryCache cache, string key, TValue value)
     {
-        object item = cache.AddOrGetExisting(key, value, new CacheItemPolicy()) ?? value;
-
-        return (TValue) item;
+        var item = cache.AddOrGetExisting(key, value, new CacheItemPolicy()) ?? value;
+        return (TValue)item;
     }
 
-    /// <summary>A MemoryCache extension method that adds an or get existing.</summary>
-    /// <typeparam name="TValue">Type of the value.</typeparam>
-    /// <param name="cache">The cache to act on.</param>
-    /// <param name="key">The key.</param>
-    /// <param name="valueFactory">The value factory.</param>
-    /// <returns>A TValue.</returns>
     public static TValue AddOrGetExisting<TValue>(this MemoryCache cache, string key, Func<string, TValue> valueFactory)
     {
         var lazy = new Lazy<TValue>(() => valueFactory(key));
-
-        Lazy<TValue> item = (Lazy<TValue>) cache.AddOrGetExisting(key, lazy, new CacheItemPolicy()) ?? lazy;
-
+        var item = (Lazy<TValue>)cache.AddOrGetExisting(key, lazy, new CacheItemPolicy()) ?? lazy;
         return item.Value;
     }
 
-    /// <summary>A MemoryCache extension method that adds an or get existing.</summary>
-    /// <typeparam name="TValue">Type of the value.</typeparam>
-    /// <param name="cache">The cache to act on.</param>
-    /// <param name="key">The key.</param>
-    /// <param name="valueFactory">The value factory.</param>
-    /// <param name="policy">The policy.</param>
-    /// <param name="regionName">(Optional) name of the region.</param>
-    /// <returns>A TValue.</returns>
     public static TValue AddOrGetExisting<TValue>(this MemoryCache cache, string key, Func<string, TValue> valueFactory, CacheItemPolicy policy, string regionName = null)
     {
         var lazy = new Lazy<TValue>(() => valueFactory(key));
-
-        Lazy<TValue> item = (Lazy<TValue>) cache.AddOrGetExisting(key, lazy, policy, regionName) ?? lazy;
-
+        var item = (Lazy<TValue>)cache.AddOrGetExisting(key, lazy, policy, regionName) ?? lazy;
         return item.Value;
     }
 
-    /// <summary>A MemoryCache extension method that adds an or get existing.</summary>
-    /// <typeparam name="TValue">Type of the value.</typeparam>
-    /// <param name="cache">The cache to act on.</param>
-    /// <param name="key">The key.</param>
-    /// <param name="valueFactory">The value factory.</param>
-    /// <param name="absoluteExpiration">The policy.</param>
-    /// <param name="regionName">(Optional) name of the region.</param>
-    /// <returns>A TValue.</returns>
     public static TValue AddOrGetExisting<TValue>(this MemoryCache cache, string key, Func<string, TValue> valueFactory, DateTimeOffset absoluteExpiration, string regionName = null)
     {
         var lazy = new Lazy<TValue>(() => valueFactory(key));
-
-        Lazy<TValue> item = (Lazy<TValue>) cache.AddOrGetExisting(key, lazy, absoluteExpiration, regionName) ?? lazy;
-
+        var item = (Lazy<TValue>)cache.AddOrGetExisting(key, lazy, absoluteExpiration, regionName) ?? lazy;
         return item.Value;
     }
-#endif
 }

@@ -1,18 +1,15 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     Indicates whether the specified Unicode character is categorized as white space.
+    ///     Determines whether the specified Unicode character is categorized as a white space character.
+    ///     White space characters include spaces, tabs, line breaks, and other characters that are used for spacing in text.
     /// </summary>
     /// <param name="c">The Unicode character to evaluate.</param>
-    /// <returns>true if  is white space; otherwise, false.</returns>
+    /// <returns>
+    ///     true if the character is considered white space; otherwise, false.
+    /// </returns>
     public static Boolean IsWhiteSpace(this Char c)
     {
         return Char.IsWhiteSpace(c);

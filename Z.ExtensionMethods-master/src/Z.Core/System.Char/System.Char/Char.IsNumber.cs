@@ -1,18 +1,17 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     Indicates whether the specified Unicode character is categorized as a number.
+    ///     Determines whether the specified Unicode character is categorized as a number.
+    ///     This method checks if the character is classified as a number according to the Unicode standard.
+    ///     This includes digit characters (0-9) and other numeric symbols.
     /// </summary>
     /// <param name="c">The Unicode character to evaluate.</param>
-    /// <returns>true if  is a number; otherwise, false.</returns>
+    /// <returns>
+    ///     <c>true</c> if the character is a number (e.g., digits, numeric symbols);
+    ///     otherwise, <c>false</c>.
+    /// </returns>
     public static Boolean IsNumber(this Char c)
     {
         return Char.IsNumber(c);

@@ -1,67 +1,38 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System.IO;
 using System.IO.Compression;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     A FileInfo extension method that creates a zip file.
+    /// Compresses the file into a GZip file at the same location with a ".gz" extension.
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    public static void CreateGZip(this FileInfo @this)
+    /// <param name="file">The file to compress.</param>
+    public static void CreateGZip(this FileInfo file)
     {
-        using (FileStream originalFileStream = @this.OpenRead())
-        {
-            using (FileStream compressedFileStream = File.Create(@this.FullName + ".gz"))
-            {
-                using (var compressionStream = new GZipStream(compressedFileStream, CompressionMode.Compress))
-                {
-                    originalFileStream.CopyTo(compressionStream);
-                }
-            }
-        }
+        file.CreateGZip(file.FullName + ".gz");
     }
 
     /// <summary>
-    ///     A FileInfo extension method that creates a zip file.
+    /// Compresses the file into a GZip file at the specified destination path.
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="destination">Destination for the zip.</param>
-    public static void CreateGZip(this FileInfo @this, string destination)
+    /// <param name="file">The file to compress.</param>
+    /// <param name="destinationPath">The destination path for the compressed file.</param>
+    public static void CreateGZip(this FileInfo file, string destinationPath)
     {
-        using (FileStream originalFileStream = @this.OpenRead())
-        {
-            using (FileStream compressedFileStream = File.Create(destination))
-            {
-                using (var compressionStream = new GZipStream(compressedFileStream, CompressionMode.Compress))
-                {
-                    originalFileStream.CopyTo(compressionStream);
-                }
-            }
-        }
+        using var originalFileStream = file.OpenRead();
+        using var compressedFileStream = File.Create(destinationPath);
+        using var compressionStream = new GZipStream(compressedFileStream, CompressionMode.Compress);
+
+        originalFileStream.CopyTo(compressionStream);
     }
 
     /// <summary>
-    ///     A FileInfo extension method that creates a zip file.
+    /// Compresses the file into a GZip file at the location specified by the destination <see cref="FileInfo"/>.
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="destination">Destination for the zip.</param>
-    public static void CreateGZip(this FileInfo @this, FileInfo destination)
+    /// <param name="file">The file to compress.</param>
+    /// <param name="destinationFile">The destination file information for the compressed file.</param>
+    public static void CreateGZip(this FileInfo file, FileInfo destinationFile)
     {
-        using (FileStream originalFileStream = @this.OpenRead())
-        {
-            using (FileStream compressedFileStream = File.Create(destination.FullName))
-            {
-                using (var compressionStream = new GZipStream(compressedFileStream, CompressionMode.Compress))
-                {
-                    originalFileStream.CopyTo(compressionStream);
-                }
-            }
-        }
+        file.CreateGZip(destinationFile.FullName);
     }
 }

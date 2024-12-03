@@ -1,28 +1,22 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 using System.Collections.Generic;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     An IDictionary&lt;TKey,TValue&gt; extension method that adds if not contains key.
+    /// Adds the specified key and value to the dictionary if the key does not already exist.
     /// </summary>
-    /// <typeparam name="TKey">Type of the key.</typeparam>
-    /// <typeparam name="TValue">Type of the value.</typeparam>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="key">The key.</param>
-    /// <param name="value">The value.</param>
-    /// <returns>true if it succeeds, false if it fails.</returns>
-    public static bool AddIfNotContainsKey<TKey, TValue>(this IDictionary<TKey, TValue> @this, TKey key, TValue value)
+    /// <typeparam name="TKey">The type of keys in the dictionary.</typeparam>
+    /// <typeparam name="TValue">The type of values in the dictionary.</typeparam>
+    /// <param name="dictionary">The dictionary to act on.</param>
+    /// <param name="key">The key to add.</param>
+    /// <param name="value">The value to add.</param>
+    /// <returns>True if the key-value pair was added; otherwise, false.</returns>
+    public static bool AddIfNotContainsKey<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, TValue value)
     {
-        if (!@this.ContainsKey(key))
+        if (!dictionary.ContainsKey(key))
         {
-            @this.Add(key, value);
+            dictionary.Add(key, value);
             return true;
         }
 
@@ -30,19 +24,19 @@ public static partial class Extensions
     }
 
     /// <summary>
-    ///     An IDictionary&lt;TKey,TValue&gt; extension method that adds if not contains key.
+    /// Adds the specified key and value to the dictionary if the key does not already exist, using a value factory function.
     /// </summary>
-    /// <typeparam name="TKey">Type of the key.</typeparam>
-    /// <typeparam name="TValue">Type of the value.</typeparam>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="key">The key.</param>
-    /// <param name="valueFactory">The value factory.</param>
-    /// <returns>true if it succeeds, false if it fails.</returns>
-    public static bool AddIfNotContainsKey<TKey, TValue>(this IDictionary<TKey, TValue> @this, TKey key, Func<TValue> valueFactory)
+    /// <typeparam name="TKey">The type of keys in the dictionary.</typeparam>
+    /// <typeparam name="TValue">The type of values in the dictionary.</typeparam>
+    /// <param name="dictionary">The dictionary to act on.</param>
+    /// <param name="key">The key to add.</param>
+    /// <param name="valueFactory">A function that provides the value to add if the key does not exist.</param>
+    /// <returns>True if the key-value pair was added; otherwise, false.</returns>
+    public static bool AddIfNotContainsKey<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, Func<TValue> valueFactory)
     {
-        if (!@this.ContainsKey(key))
+        if (!dictionary.ContainsKey(key))
         {
-            @this.Add(key, valueFactory());
+            dictionary.Add(key, valueFactory());
             return true;
         }
 
@@ -50,19 +44,19 @@ public static partial class Extensions
     }
 
     /// <summary>
-    ///     An IDictionary&lt;TKey,TValue&gt; extension method that adds if not contains key.
+    /// Adds the specified key and value to the dictionary if the key does not already exist, using a value factory function that takes the key as a parameter.
     /// </summary>
-    /// <typeparam name="TKey">Type of the key.</typeparam>
-    /// <typeparam name="TValue">Type of the value.</typeparam>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="key">The key.</param>
-    /// <param name="valueFactory">The value factory.</param>
-    /// <returns>true if it succeeds, false if it fails.</returns>
-    public static bool AddIfNotContainsKey<TKey, TValue>(this IDictionary<TKey, TValue> @this, TKey key, Func<TKey, TValue> valueFactory)
+    /// <typeparam name="TKey">The type of keys in the dictionary.</typeparam>
+    /// <typeparam name="TValue">The type of values in the dictionary.</typeparam>
+    /// <param name="dictionary">The dictionary to act on.</param>
+    /// <param name="key">The key to add.</param>
+    /// <param name="valueFactory">A function that provides the value to add if the key does not exist, taking the key as a parameter.</param>
+    /// <returns>True if the key-value pair was added; otherwise, false.</returns>
+    public static bool AddIfNotContainsKey<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, Func<TKey, TValue> valueFactory)
     {
-        if (!@this.ContainsKey(key))
+        if (!dictionary.ContainsKey(key))
         {
-            @this.Add(key, valueFactory(key));
+            dictionary.Add(key, valueFactory(key));
             return true;
         }
 

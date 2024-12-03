@@ -1,20 +1,23 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     A DateTime extension method that first day of week.
+    ///     A DateTime extension method that returns the first day of the week based on the given culture's start day of the week.
     /// </summary>
     /// <param name="this">The @this to act on.</param>
-    /// <returns>A DateTime.</returns>
-    public static DateTime FirstDayOfWeek(this DateTime @this)
+    /// <param name="startDayOfWeek">The day to consider as the first day of the week (e.g., Sunday or Monday).</param>
+    /// <returns>A DateTime representing the first day of the week.</returns>
+    public static DateTime FirstDayOfWeek(this DateTime @this, DayOfWeek startDayOfWeek = DayOfWeek.Sunday)
     {
-        return new DateTime(@this.Year, @this.Month, @this.Day).AddDays(-(int) @this.DayOfWeek);
+        int diff = @this.DayOfWeek - startDayOfWeek;
+        
+        // Adjust the diff to handle negative values properly (when the current day is before the start day of the week).
+        if (diff < 0)
+        {
+            diff += 7;
+        }
+
+        return @this.AddDays(-diff).Date; // Sets the time to 00:00:00.000
     }
 }

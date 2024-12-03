@@ -1,9 +1,3 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright � ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
@@ -12,8 +6,11 @@ public static partial class Extensions
     ///     Returns the cosine of the specified angle.
     /// </summary>
     /// <param name="d">An angle, measured in radians.</param>
-    /// <returns>The cosine of . If  is equal to , , or , this method returns .</returns>
-    public static Double Cos(this Double d)
+    /// <returns>
+    ///     The cosine of <paramref name="d"/>.
+    ///     If <paramref name="d"/> is equal to 0, π/2, or multiples of π, the method returns the appropriate cosine value (1 for 0, 0 for π/2, and so on).
+    /// </returns>
+    public static double Cos(this double d)
     {
         return Math.Cos(d);
     }

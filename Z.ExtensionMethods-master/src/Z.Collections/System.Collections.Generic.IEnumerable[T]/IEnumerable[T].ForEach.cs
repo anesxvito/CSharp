@@ -1,46 +1,38 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     Enumerates for each in this collection.
+    /// Executes the specified action on each element in the enumerable.
     /// </summary>
-    /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="action">The action.</param>
-    /// <returns>An enumerator that allows foreach to be used to process for each in this collection.</returns>
-    public static IEnumerable<T> ForEach<T>(this IEnumerable<T> @this, Action<T> action)
+    /// <typeparam name="T">The type of elements in the enumerable.</typeparam>
+    /// <param name="source">The enumerable to act on.</param>
+    /// <param name="action">The action to perform on each element.</param>
+    /// <returns>The original enumerable after performing the action on each element.</returns>
+    public static IEnumerable<T> ForEach<T>(this IEnumerable<T> source, Action<T> action)
     {
-        T[] array = @this.ToArray();
-        foreach (T t in array)
+        foreach (var item in source)
         {
-            action(t);
+            action(item);
         }
-        return array;
+        return source;
     }
 
-    /// <summary>Enumerates for each in this collection.</summary>
-    /// <typeparam name="T">Generic type parameter.</typeparam>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="action">The action.</param>
-    /// <returns>An enumerator that allows foreach to be used to process for each in this collection.</returns>
-    public static IEnumerable<T> ForEach<T>(this IEnumerable<T> @this, Action<T, int> action)
+    /// <summary>
+    /// Executes the specified action on each element in the enumerable, providing the index of each element.
+    /// </summary>
+    /// <typeparam name="T">The type of elements in the enumerable.</typeparam>
+    /// <param name="source">The enumerable to act on.</param>
+    /// <param name="action">The action to perform on each element, with the index provided.</param>
+    /// <returns>The original enumerable after performing the action on each element.</returns>
+    public static IEnumerable<T> ForEach<T>(this IEnumerable<T> source, Action<T, int> action)
     {
-        T[] array = @this.ToArray();
-
-        for (int i = 0; i < array.Length; i++)
+        int index = 0;
+        foreach (var item in source)
         {
-            action(array[i], i);
+            action(item, index++);
         }
-
-        return array;
+        return source;
     }
 }

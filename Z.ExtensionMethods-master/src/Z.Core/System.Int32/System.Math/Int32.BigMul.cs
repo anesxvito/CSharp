@@ -1,9 +1,3 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
@@ -14,7 +8,7 @@ public static partial class Extensions
     /// <param name="a">The first number to multiply.</param>
     /// <param name="b">The second number to multiply.</param>
     /// <returns>The number containing the product of the specified numbers.</returns>
-    public static Int64 BigMul(this Int32 a, Int32 b)
+    public static long BigMul(this int a, int b)
     {
         return Math.BigMul(a, b);
     }

@@ -1,20 +1,14 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System.Collections;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     An IDictionary extension method that converts the @this to a hashtable.
+    /// Converts the dictionary to a <see cref="Hashtable"/>.
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <returns>@this as a Hashtable.</returns>
-    public static Hashtable ToHashtable(this IDictionary @this)
+    /// <param name="dictionary">The dictionary to convert.</param>
+    /// <returns>A <see cref="Hashtable"/> containing the same key-value pairs as the original dictionary.</returns>
+    public static Hashtable ToHashtable(this IDictionary dictionary)
     {
-        return new Hashtable(@this);
+        return new Hashtable(dictionary);
     }
 }

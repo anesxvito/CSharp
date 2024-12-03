@@ -1,9 +1,3 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
@@ -11,11 +5,14 @@ public static partial class Extensions
     /// <summary>
     ///     Returns e raised to the specified power.
     /// </summary>
-    /// <param name="d">A number specifying a power.</param>
+    /// <param name="d">A number specifying the exponent.</param>
     /// <returns>
-    ///     The number e raised to the power . If  equals  or , that value is returned. If  equals , 0 is returned.
+    ///     The number e (Euler's number) raised to the power of <paramref name="d"/>.
+    ///     If <paramref name="d"/> is 0, the result is 1.
+    ///     If <paramref name="d"/> is positive infinity, the result is positive infinity.
+    ///     If <paramref name="d"/> is negative infinity, the result is 0.
     /// </returns>
-    public static Double Exp(this Double d)
+    public static double Exp(this double d)
     {
         return Math.Exp(d);
     }

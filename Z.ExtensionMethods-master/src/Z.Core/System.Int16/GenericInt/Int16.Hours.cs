@@ -1,20 +1,14 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     An Int16 extension method that hours the given this.
+    ///     Converts the specified number of hours (represented by this) into a TimeSpan.
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <returns>A TimeSpan.</returns>
-    public static TimeSpan Hours(this Int16 @this)
+    /// <param name="value">The number of hours to convert to a TimeSpan.</param>
+    /// <returns>A TimeSpan that represents the specified number of hours.</returns>
+    public static TimeSpan Hours(this Int16 value)
     {
-        return TimeSpan.FromHours(@this);
+        return TimeSpan.FromHours(value);
     }
 }

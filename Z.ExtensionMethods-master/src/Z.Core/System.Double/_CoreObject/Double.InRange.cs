@@ -1,23 +1,18 @@
-// Description: C# Extension Methods | Enhance the .NET Framework and .NET Core with over 1000 extension methods.
-// Website & Documentation: https://csharp-extension.com/
-// Issues: https://github.com/zzzprojects/Z.ExtensionMethods/issues
-// License (MIT): https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
-// More projects: https://zzzprojects.com/
-// Copyright © ZZZ Projects Inc. All rights reserved.
 using System;
 
 public static partial class Extensions
 {
     /// <summary>
-    ///     A T extension method that check if the value is between inclusively the minValue and maxValue.
+    ///     Determines whether the current value is within the specified range (inclusive of both min and max values).
     /// </summary>
-    /// <param name="this">The @this to act on.</param>
-    /// <param name="minValue">The minimum value.</param>
-    /// <param name="maxValue">The maximum value.</param>
-    /// <returns>true if the value is between inclusively the minValue and maxValue, otherwise false.</returns>
-    /// ###
-    /// <typeparam name="T">Generic type parameter.</typeparam>
-    public static bool InRange(this Double @this, Double minValue, Double maxValue)
+    /// <param name="this">The value to be checked.</param>
+    /// <param name="minValue">The inclusive minimum value of the range.</param>
+    /// <param name="maxValue">The inclusive maximum value of the range.</param>
+    /// <returns>
+    ///     <c>true</c> if the current value is greater than or equal to <paramref name="minValue"/> and less than or equal to <paramref name="maxValue"/>;
+    ///     otherwise, <c>false</c>.
+    /// </returns>
+    public static bool InRange(this double @this, double minValue, double maxValue)
     {
         return @this.CompareTo(minValue) >= 0 && @this.CompareTo(maxValue) <= 0;
     }
